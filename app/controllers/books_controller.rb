@@ -1,0 +1,20 @@
+class BooksController < ApplicationController
+
+  def index
+    @book_names = BookName.order(:id)
+
+    respond_to do |format|
+      format.html # show.html.erb
+      format.json { render json: @book }
+    end
+  end
+
+  def show
+
+  end
+
+  # GET /books/1/edit
+  def edit
+    @book = Book.find(params[:id])
+  end
+end

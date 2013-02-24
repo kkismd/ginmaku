@@ -1,0 +1,19 @@
+<%= form_tag books_url, :method => 'get' do %>
+    <table>
+      <%- [ @book_names[0..21], @book_names[22..43], @book_names[44..65] ].transpose.flatten.each_with_index do |book_name,i| -%>
+          <%- if i % 3 == 0 %> <tr> <%- end -%>
+          <td><%= radio_button_tag 'book_name_id', book_name.id %><%=  book_name.japanese %>/<%= book_name.english %></td>
+          <%- if i % 3 == 2 %> </tr> <%- end -%>
+      <%- end -%>
+    </table>
+
+    <%= text_field_tag 'chapter', value="", :size => 3 %>章(chapter)
+    <%= text_field_tag 'vfrom', value="", :size => 4 %>節(verse) 〜
+    <%= text_field_tag 'vto', value="", :size => 4 %>節(verse)<br />
+    <%= radio_button_tag 'lang', 1 %>日本語 &amp; English
+    <%= radio_button_tag 'lang', 2 %>日本語のみ
+    <%= radio_button_tag 'lang', 3 %>English Only<br />
+    <%= submit_tag 'Open' %> <input type="reset" value="Reset">
+<%- end %>
+
+
