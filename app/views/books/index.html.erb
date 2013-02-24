@@ -1,19 +1,21 @@
-<%= form_tag books_url, :method => 'get' do %>
+<pre><%= params.inspect %></pre>
+<%= form_for @book_search_form, :url => books_path, :html => {:method => :get} do |f| %>
     <table>
       <%- [ @book_names[0..21], @book_names[22..43], @book_names[44..65] ].transpose.flatten.each_with_index do |book_name,i| -%>
           <%- if i % 3 == 0 %> <tr> <%- end -%>
-          <td><%= radio_button_tag 'book_name_id', book_name.id %><%=  book_name.japanese %>/<%= book_name.english %></td>
+
+          <td><%= f.radio_button :n, book_name.id %><%=  book_name.japanese %>/<%= book_name.english %></td>
+
           <%- if i % 3 == 2 %> </tr> <%- end -%>
       <%- end -%>
     </table>
 
-    <%= text_field_tag 'chapter', value="", :size => 3 %>章(chapter)
-    <%= text_field_tag 'vfrom', value="", :size => 4 %>節(verse) 〜
-    <%= text_field_tag 'vto', value="", :size => 4 %>節(verse)<br />
-    <%= radio_button_tag 'lang', 1 %>日本語 &amp; English
-    <%= radio_button_tag 'lang', 2 %>日本語のみ
-    <%= radio_button_tag 'lang', 3 %>English Only<br />
-    <%= submit_tag 'Open' %> <input type="reset" value="Reset">
+    <%= f.text_field :c, :size => 3 %>章(chapter)
+    <%= f.text_field :vf, :size => 4 %>節(verse) 〜
+    <%= f.text_field :vt, :size => 4 %>節(verse)<br />
+    <%= f.radio_button :lang, 1 %>日本語 &amp; English
+    <%= f.radio_button :lang, 2 %>日本語のみ
+    <%= f.radio_button :lang, 3 %>English Only<br />
+    <%= f.submit 'Open' %> <input type="reset" value="Reset">
 <%- end %>
-
 

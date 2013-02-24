@@ -1,6 +1,7 @@
 class BooksController < ApplicationController
 
   def index
+    @book_search_form = BookSearchForm.new params[:book_search_form]
     @book_names = BookName.order(:id)
 
     respond_to do |format|
