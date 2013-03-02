@@ -1,4 +1,3 @@
-<pre><%= params.inspect %></pre>
 <%= form_for @book_search_form, :url => books_path, :html => {:method => :get} do |f| %>
     <table>
       <%- [ @book_names[0..21], @book_names[22..43], @book_names[44..65] ].transpose.flatten.each_with_index do |book_name,i| -%>
@@ -13,9 +12,18 @@
     <%= f.text_field :c, :size => 3 %>章(chapter)
     <%= f.text_field :vf, :size => 4 %>節(verse) 〜
     <%= f.text_field :vt, :size => 4 %>節(verse)<br />
-    <%= f.radio_button :lang, 1 %>日本語 &amp; English
-    <%= f.radio_button :lang, 2 %>日本語のみ
-    <%= f.radio_button :lang, 3 %>English Only<br />
+    <%= f.radio_button :lang, BookSearchForm::LANG_BOTH %>日本語 &amp; English
+    <%= f.radio_button :lang, BookSearchForm::LANG_JAPANESE %>日本語のみ
+    <%= f.radio_button :lang, BookSearchForm::LANG_ENGLISH %>English Only<br />
     <%= f.submit 'Open' %> <input type="reset" value="Reset">
 <%- end %>
 
+<table>
+  <%- @books.to_a.each do |book| -%>
+      <tr>
+        <td><%= book.chapter %></td>
+        <td><%= book.verse %></td>
+        <td><%= book.word %></td>
+      </tr>
+  <%- end -%>
+</table>
