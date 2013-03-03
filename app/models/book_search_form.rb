@@ -35,7 +35,7 @@ class BookSearchForm
     if vt.present?
       books = books.where(t[:verse].lteq(vt))
     end
-    books.order(t[:chapter].asc, t[:verse].asc).tap {|rel| Rails.logger.warn rel.to_sql }
+    books.order(t[:chapter].asc, t[:verse].asc, t[:version].asc).tap {|rel| Rails.logger.warn rel.to_sql }
   end
 
   def persisted?
