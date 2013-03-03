@@ -1,4 +1,5 @@
-<%= form_for @book_search_form, :url => books_path, :html => {:method => :get} do |f| %>
+<%= pp params[:book_search_form] %>
+<%= form_for @book_search_form, :url => search_books_path, :html => {:method => :get, :target => "projector"} do |f| %>
     <table>
       <%- [ @book_names[0..21], @book_names[22..43], @book_names[44..65] ].transpose.flatten.each_with_index do |book_name,i| -%>
           <%- if i % 3 == 0 %> <tr> <%- end -%>
@@ -18,12 +19,3 @@
     <%= f.submit 'Open' %> <input type="reset" value="Reset">
 <%- end %>
 
-<table>
-  <%- @books.to_a.each do |book| -%>
-      <tr>
-        <td><%= book.chapter %></td>
-        <td><%= book.verse %></td>
-        <td><%= book.word %></td>
-      </tr>
-  <%- end -%>
-</table>

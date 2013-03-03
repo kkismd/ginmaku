@@ -1,0 +1,9 @@
+<table>
+  <%- @books.to_a.each do |book| -%>
+      <tr>
+        <td><%= book.chapter %></td>
+        <td><%= book.verse %></td>
+        <td><%= book.word %></td>
+      </tr>
+  <%- end -%>
+</table>

@@ -1,6 +1,10 @@
 Ginmaku::Application.routes.draw do
   resources :samples
-  resources :books
+  resources :books do
+    collection do
+      get :search
+    end
+  end
 
 
   # The priority is based upon order of creation:

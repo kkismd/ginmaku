@@ -19,13 +19,15 @@ class BookSearchForm
   def search
     t = Book.arel_table
     books =  Book.where(:book_name_id => n, :chapter => c)
-    case lang
+    case lang.to_i
       when LANG_BOTH
-        books = books.where(t[:version].eq(1).or(t[:version]).eq(2))
+        books = books.where(t[:version].eq(1).or(t[:version].eq(2)))
       when LANG_JAPANESE
         books = books.where(:version => 1)
       when LANG_ENGLISH
         books = books.where(:version => 2)
+      else
+        # do nothing
     end
     if vf.present?
       books = books.where(t[:verse].gteq(vf))
@@ -33,7 +35,7 @@ class BookSearchForm
     if vt.present?
       books = books.where(t[:verse].lteq(vt))
     end
-    books.order(t[:chapter].asc, t[:verse].asc)
+    books.order(t[:chapter].asc, t[:verse].asc).tap {|rel| Rails.logger.warn rel.to_sql }
   end
 
   def persisted?
