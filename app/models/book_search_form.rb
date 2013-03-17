@@ -17,6 +17,9 @@ class BookSearchForm
   end
 
   def search
+    # パラメータが与えられていない場合は空を返す
+    return []  if n.blank?
+
     t = Book.arel_table
     books =  Book.where(:book_name_id => n, :chapter => c)
     case lang.to_i
@@ -38,7 +41,6 @@ class BookSearchForm
     books.order(t[:chapter].asc, t[:verse].asc, t[:version].asc).tap {|rel| Rails.logger.warn rel.to_sql }
   end
 
-  def persisted?
-    false
-  end
+  private
+  def persisted?; false; end
 end

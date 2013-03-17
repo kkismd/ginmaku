@@ -1,0 +1,59 @@
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+  
+    <title>Fontsizetest</title>
+    <style type="text/css" media="screen">
+      * {margin: 0; padding: 0;}
+      body { overflow: hidden; }
+      #song {
+        position: absolute; top: 0; left: 0;
+        font-size: 50px;
+        /* fixed size for the device */
+        width: 1024px;
+        height: 768px;
+        border: 1px black solid;
+      }
+    </style>
+    <script type="text/javascript" charset="utf-8" src="/assets/jquery.js"></script>
+    <script type="text/javascript" charset="utf-8">
+
+      function resize(id) {
+        var o = $("#" + id);
+        var e = o.get(0); // jQueryObjectからHtmlElementを取り出す
+
+        var widthGap = e.clientWidth / e.scrollWidth;
+        var heightGap = e.clientHeight / e.scrollHeight;
+          console.log("clientWidth = " + e.clientWidth);
+          console.log("scrollWidth = " + e.scrollWidth);
+          console.log("clientHeight = " + e.clientHeight);
+          console.log("scrollHeight = " + e.scrollHeight);
+
+        // 縦横はみ出しが大きい方に合わせる
+        var gapRatio = Math.min(widthGap, heightGap)
+
+        var fontSize = parseInt(o.css('fontSize'));
+        var newFontSize = parseInt(fontSize * gapRatio);
+        console.log(newFontSize);
+        o.css('fontSize', newFontSize);
+      }
+    </script>
+  </head>
+  <body onclick="resize('song')">
+  <div id="song"><pre>
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+あああああああああああああああ
+  </pre></div>
+  </body>

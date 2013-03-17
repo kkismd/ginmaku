@@ -1,0 +1,16 @@
+<p id="notice"><%= notice %></p>
+
+ここに、手元のディスプレイ用の表示を行う
+・曲のウィンドウを開く
+・開いたウィンドウのフォントの大きさを調整できる
+
+<p>
+<%= link_to '表示', detail_song_path(@song), :target => 'projector'  %>
+</p>
+
+
+<p> <%= @song.title %> </p>
+<p id="song"> <%= @song.words.split(/\r|\n/).first %> </p>
+
+<%= link_to 'Edit', edit_song_path(@song) %> |
+<%= link_to 'Back', songs_path %>

@@ -1,0 +1,30 @@
+<table>
+  <tr>
+    <th>Code</th>
+    <th>Title</th>
+    <th>Words</th>
+    <th>Kana</th>
+    <th>Cright</th>
+    <th>Size</th>
+    <th>Deleted</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.code %></td>
+        <td><%= song.title %></td>
+        <td><%= song.words %></td>
+        <td><%= song.kana %></td>
+        <td><%= song.cright %></td>
+        <td><%= song.size %></td>
+        <td><%= song.deleted %></td>
+        <td><%= link_to 'Show', song %></td>
+        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+

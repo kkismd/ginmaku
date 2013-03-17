@@ -1,0 +1,17 @@
+<h1>praise database</h1>
+
+<%= form_for @song_search_form, :url => search_songs_path, :html => {:method => :get} do |f| -%>
+<p>検索
+  <%= f.text_field :q, :size => "20" %>
+  <%= f.submit "search" %>
+</p>
+<%- end -%>
+
+<br />
+
+<ul>
+  <li><%= link_to '新しい曲の追加 - Add a New Song', new_song_path %></li>
+  <li><%= link_to '聖句検索 - Bible words', books_path %></li>
+  <li><%= link_to 'メッセージレジュメ - Message summaries', preaches_path %></li>
+</ul>
+

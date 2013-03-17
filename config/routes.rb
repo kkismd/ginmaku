@@ -1,5 +1,16 @@
 Ginmaku::Application.routes.draw do
-  resources :samples
+  resources :preaches
+
+  resources :songs do
+    member do
+      get :detail
+    end
+
+    collection do
+      get :search
+    end
+  end
+
   resources :books do
     collection do
       get :search

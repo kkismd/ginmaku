@@ -12,11 +12,7 @@ class BooksController < ApplicationController
 
   def search
     @book_search_form = BookSearchForm.new params[:book_search_form]
-
-    # フォームからの入力があればDBを検索する
-    if @book_search_form.n.present?
-      @books = @book_search_form.search
-    end
+    @books = @book_search_form.search
   end
 
   # GET /books/1/edit

@@ -21,7 +21,7 @@
 <%- end -%>
 <div id="view">
 <table>
-  <%- @books.to_a.each do |book| -%>
+  <%- @books.each do |book| -%>
       <tr>
         <td class="chapter"><%= book.chapter %>:<%= book.verse %></td>
         <td class="words"><%= slash_to_br book.word %></td>
