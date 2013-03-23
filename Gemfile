@@ -1,5 +1,5 @@
 source 'https://rubygems.org'
-source "http://gems.github.com"
+source 'http://gems.github.com'
 
 
 gem 'rails', '3.2.12'
@@ -7,9 +7,8 @@ gem 'rails', '3.2.12'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'shoulda', '3.3.2'
 gem 'mysql2'
-gem "acts_as_paranoid", "~>0.4.0"
+gem 'acts_as_paranoid', '~>0.4.0'
 
 group :development do
   gem 'sqlite3'
