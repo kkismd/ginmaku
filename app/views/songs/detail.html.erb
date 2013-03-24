@@ -1,20 +1,10 @@
-ここに歌詞の詳細を出力する
+<%- content_for :header do -%>
+    <script type="text/javascript">
+      $(function() { resize($('#p0')[0]); })
+    </script>
+<%- end -%>
 
-<h2>TODO</h2>
-<pre>
-* songレコードのひとかたまりごとに画面いっぱいに表示される
-* 画面いっぱいに表示されるようにフォントサイズが自動調整される
-* 外部（親ウィンドウ）からの 操作により表示されるかたまりが切り替わる
-</pre>
-
-<h2>DONE</h2>
-<pre>
-* detail画面はshow画面からユーザーの操作で子ウィンドウとして開かれる
-* 振り仮名がRUBYタグを使ってマークアップされる
-</pre>
-
-
-<%- @song.phrases.each do |phrase| %>
-    <pre><%= rubify  phrase %></pre>
+<%- @song.phrases.each_with_index do |phrase, idx| %>
+    <pre id="<%= 'p' + idx.to_s %>" class="song <%= idx > 0 ? 'hidden' : '' %>"><%= rubify  phrase %></pre>
 <%- end -%>
 

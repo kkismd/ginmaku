@@ -8,6 +8,7 @@ Ginmaku::Application.routes.draw do
 
     collection do
       get :search
+      get :list
     end
   end
 

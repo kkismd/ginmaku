@@ -3,6 +3,7 @@ class SongsController < ApplicationController
   # GET /songs.json
   def index
     @song_search_form = SongSearchForm.new(params[:song_search_form])
+    @recents = Song.recents
 
     respond_to do |format|
       format.html # index.html.erb
@@ -11,7 +12,7 @@ class SongsController < ApplicationController
   end
 
   def list
-    @songs = Song.all
+    @songs = Song.order('id').page(params[:page])
 
     respond_to do |format|
       format.html # index.html.erb
@@ -104,7 +105,7 @@ class SongsController < ApplicationController
   def search
     @song_search_form = SongSearchForm.new(params[:song_search_form])
     if @song_search_form.q.present?
-      @songs = @song_search_form.search
+      @songs = @song_search_form.search.page(params[:page])
     else
       @songs = []
     end

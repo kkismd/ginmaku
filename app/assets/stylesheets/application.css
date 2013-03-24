@@ -11,3 +11,22 @@
  *= require_self
  *= require_tree .
  */
+pre {
+    font-family: "Arial Narrow", sans-serif;
+}
+a:link {
+    color: white;
+    text-decoration: none;
+}
+a:visited {
+    color: white;
+    text-decoration: none;
+}
+a:hover {
+    background-color: red;
+    text-decoration: underline;
+}
+a:active {
+    color: red;
+    text-decoration: none;
+}

@@ -1,0 +1,22 @@
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Code</th>
+    <th>Title</th>
+    <th>Last update</th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <%= paginate @songs %>
+  <% @songs.each do |song| %>
+      <tr>
+        <td><%= song.id %></td>
+        <td><%= song.code %></td>
+        <td><%= link_to song.title, song %></td>
+        <td><%= song.updated_at.to_s(:db) %></td>
+        <td><%= link_to 'Edit', edit_song_path(song) %></td>
+        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
