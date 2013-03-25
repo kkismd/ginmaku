@@ -7,10 +7,11 @@ body {
   color: white;
 }
 .song {
+  margin: 0;
   font-size: 36px;
-  width: 800px;
-  height: 600px;
-//  border: 1px solid white;
+  width: 1000px;
+  height: 720px;
+  border: 1px solid white;
 }
 .hidden {
   display: none;

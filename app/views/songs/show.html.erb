@@ -12,6 +12,7 @@
     <p><%= link_to_function(suppress_ruby(header), "change_remote(#{idx},'#{detail_song_url(@song)}')") %></p>
 <%- end -%>
 
+<%= link_to 'ReOpen', detail_song_path(@song), :target => 'projector' %> |
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
 </div>
