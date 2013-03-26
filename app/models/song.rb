@@ -1,6 +1,13 @@
+# coding: utf-8
 class Song < ActiveRecord::Base
   acts_as_paranoid
-  attr_accessible :code, :cright, :kana, :title, :words, :deleted_at, :updated_at
+  attr_accessible :code, :cright, :title, :words, :words_for_search, :deleted_at, :updated_at
+
+  # ふりがな処理のための正規表現
+  RUBY_REG1 = /([一-龠々]+)\(([ぁ-ん]+)\)/   # 漢字 ⇒ ひらがな
+  RUBY_REG2 = /([a-zA-Z']+)\(([ァ-ヶー]+)\)/ # 英語 ⇒ カタカナ
+  RUBY_REG3 = /([ァ-ヴー]+)\(([ぁ-んー]+)\)/ # カタカナ ⇒ ひらがな
+  RUBY_REG4 = /[^a-zA-Z一-龠々ぁ-んァ-ヶ々ー]/ # 英字、漢字、ひらがな、カタカナ 以外の文字
 
   def self.code_options
     %w(A Ab Bb C Cm D E  Eb Em F  F#m Fm G)
@@ -18,5 +25,27 @@ class Song < ActiveRecord::Base
   # グループの一行目だけを返す
   def outline
     phrases.map{ |string| string.gsub(/\n.*/, '') }
+  end
+
+  def kanji
+    words.
+        gsub(RUBY_REG1){$1}.
+        gsub(RUBY_REG2){$2}.
+        gsub(RUBY_REG2){$3}
+  end
+
+  def kana
+    words.
+        gsub(RUBY_REG1){$2}.
+        gsub(RUBY_REG2){$2}.
+        gsub(RUBY_REG3){$3}
+  end
+
+  def update_words_for_search
+    self[:words_for_search] = ruby_trim(kanji + kana)
+  end
+
+  def ruby_trim(str)
+    str.gsub(RUBY_REG4, '')
   end
 end

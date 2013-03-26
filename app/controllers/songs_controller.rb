@@ -77,9 +77,15 @@ class SongsController < ApplicationController
   # PUT /songs/1.json
   def update
     @song = Song.find(params[:id])
+    is_saved = nil
+    Song.transaction do
+      @song.attributes = params[:song]
+      @song.update_words_for_search
+      is_saved = @song.save
+    end
 
     respond_to do |format|
-      if @song.update_attributes(params[:song])
+      if is_saved
         format.html { redirect_to @song, notice: 'Song was successfully updated.' }
         format.json { head :no_content }
       else
@@ -93,8 +99,7 @@ class SongsController < ApplicationController
   # DELETE /songs/1.json
   def destroy
     @song = Song.find(params[:id])
-    @song.deleted = true
-    @song.save
+    @song.destroy
 
     respond_to do |format|
       format.html { redirect_to songs_url }

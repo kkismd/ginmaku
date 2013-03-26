@@ -15,7 +15,7 @@ class SongSearchForm
 
   def search
     songs = Song.arel_table
-    result = Song.where(songs[:kana].matches("%#{q}%"))
+    result = Song.where(songs[:words_for_search].matches("%#{q}%"))
     if code.present?
       result = result.where(songs[:code].eq(code))
     end
@@ -23,5 +23,5 @@ class SongSearchForm
   end
 
   private
-  def persisted?; false; end
+  def persisted?; false end
 end
