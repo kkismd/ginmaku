@@ -16,19 +16,34 @@
   newFontSize = parseInt(parseInt(fontSize) * gapRatio)
   e.style.fontSize = newFontSize + 'px'
 
+make_window_handler = (target) ->
+  wnd = null
+  () ->
+    if !wnd || !wnd.location
+      wnd = window.open('', target)
+    wnd
 
-current = 0
-
-phrases = () -> $('.song')
+get_detail_window = make_window_handler('projector')
 
 # 子ウィンドウの歌詞を切り替える
 @change_remote = (idx, url) ->
-  detail_window = window.open('', 'projector')
+  detail_window = get_detail_window()
+
   # 指定のURLにいなければ移動
   if url isnt detail_window.location.href
     detail_window.location = url
+
+  # 表示切り替えを指示
   detail_window.change(idx)
 
+
+#
+# 子ウィンドウ側で呼び出される処理
+#
+phrases = () -> $('.song')
+current = 0
+
+# 指定された番号の歌詞に切り替える
 @change = (idx) ->
   phrases()[current].style.display = 'none'
   current = idx
