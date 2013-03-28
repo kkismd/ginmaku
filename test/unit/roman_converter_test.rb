@@ -36,7 +36,7 @@ class RomanConverterTest <  ActiveSupport::TestCase
     converter = RomanConverter.new
     @check_list.each do |pair|
       expects, input = pair
-      actual = converter.convert(input)
+      actual = converter.to_roman(input)
       assert_equal expects, actual
     end
   end

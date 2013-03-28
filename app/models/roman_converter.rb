@@ -131,7 +131,7 @@ class RomanConverter
   def initialize
   end
 
-  def convert(kana)
+  def to_roman(kana)
     result = kana.dup
     PATS.each do |kana, replace|
       kana_pat = Regexp.new(kana)
@@ -146,6 +146,6 @@ class RomanConverter
         end
       end
     end
-    result
+    result.gsub(/[ ]+/, ' ').gsub(/^[ ]+/, '')
   end
 end

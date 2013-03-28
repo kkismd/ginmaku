@@ -3,18 +3,18 @@ module SongsHelper
 
   def rubify(str)
     str.
-        gsub(Song::RUBY_REG1){"<ruby>#{$1}<rt>#{$2}</rt></ruby>"}.
-        gsub(Song::RUBY_REG2){"<ruby>#{$1}<rt>#{$2}</rt></ruby>"}.
-        gsub(Song::RUBY_REG3){"<ruby>#{$1}<rt>#{$2}</rt></ruby>"}.
+        gsub(Song::KANJI_KANA){"<ruby>#{$1}<rt>#{$2}</rt></ruby>"}.
+        gsub(Song::ENG_KANA){"<ruby>#{$1}<rt>#{$2}</rt></ruby>"}.
+        gsub(Song::KANA_HIRA){"<ruby>#{$1}<rt>#{$2}</rt></ruby>"}.
         html_safe
   end
 
   # TODO Song#kanji で実装する
   def suppress_ruby(str)
     str.
-        gsub(Song::RUBY_REG1){$1}.
-        gsub(Song::RUBY_REG2){$1}.
-        gsub(Song::RUBY_REG3){$1}.
+        gsub(Song::KANJI_KANA){$1}.
+        gsub(Song::ENG_KANA){$1}.
+        gsub(Song::KANA_HIRA){$1}.
         html_safe
   end
 

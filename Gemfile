@@ -13,6 +13,7 @@ gem 'kaminari'
 group :development do
   gem 'sqlite3'
   gem 'i18n_generators'
+  gem 'test-unit'
 end
 
 # Gems used only for assets and not required
