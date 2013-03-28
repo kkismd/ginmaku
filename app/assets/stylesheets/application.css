@@ -11,6 +11,10 @@
  *= require_self
  *= require_tree .
  */
+body {
+    background: rgb(0, 0, 5) url(bg.png);
+    color: white;
+}
 pre {
     font-family: "Arial Narrow", sans-serif;
 }
