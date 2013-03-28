@@ -1,5 +1,3 @@
 == Ginmaku
 
 ginmaku is a web application using for projector based activity.
-
-This program is used for charch activities.
