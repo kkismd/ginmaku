@@ -48,4 +48,15 @@ class Song < ActiveRecord::Base
   def ruby_trim(str)
     str.gsub(RUBY_REG4, '')
   end
+
+  def romanize!
+    converter = RomanConverter.new
+    result = StringIO.new
+    if words =~ RUBY_REG1 || words =~ RUBY_REG2 || words =~ RUBY_REG3
+      self.words.each_line do |line|
+        result <<  line + "\n" + converter.convert(line)
+      end
+      self.words = result.string
+    end
+  end
 end

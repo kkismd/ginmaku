@@ -61,6 +61,7 @@ class SongsController < ApplicationController
   # POST /songs.json
   def create
     @song = Song.new(params[:song])
+    @song.romanize!
 
     respond_to do |format|
       if @song.save
