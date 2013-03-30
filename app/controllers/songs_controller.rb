@@ -43,7 +43,6 @@ class SongsController < ApplicationController
   end
 
   def preview
-    logger.error params.inspect
     @song = Song.new(words:params[:words])
   end
 
@@ -87,6 +86,7 @@ class SongsController < ApplicationController
     is_saved = nil
     Song.transaction do
       @song.attributes = params[:song]
+      @song.romanize! if params[:button] == 'roman'
       @song.update_words_for_search
       is_saved = @song.save
     end
