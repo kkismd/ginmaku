@@ -3,6 +3,9 @@
 
 <div id="boxA">
 <pre class='small'><%= suppress_ruby @song.words %></pre>
+  <script type="text/javascript">
+    $('pre.small').draggable({axis:'y', cursor:'move'});
+  </script>
 </div>
 
 <div id="boxB">
