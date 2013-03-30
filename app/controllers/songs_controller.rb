@@ -1,3 +1,4 @@
+# encode: utf-8
 class SongsController < ApplicationController
   # GET /songs
   # GET /songs.json
@@ -39,6 +40,11 @@ class SongsController < ApplicationController
       format.html # detail.html.erb
       format.json { render json: @song }
     end
+  end
+
+  def preview
+    logger.error params.inspect
+    @song = Song.new(words:params[:words])
   end
 
   # GET /songs/new

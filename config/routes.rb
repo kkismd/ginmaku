@@ -4,6 +4,7 @@ Ginmaku::Application.routes.draw do
   resources :songs do
     member do
       get :detail
+      post :preview
     end
 
     collection do

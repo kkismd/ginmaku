@@ -13,41 +13,36 @@
 
     <table>
       <tr>
-        <th>
-          <%= f.label :code %>
-        </th>
-        <td>
-          <%= f.select(:code, Song.code_options, :prompt => 'コードを指定して下さい') %>
-        </td>
+        <th> <%= f.label :code %> </th>
+        <td> <%= f.select(:code, Song.code_options, :prompt => 'コードを指定して下さい') %> </td>
       </tr>
       <tr>
-        <th>
-          <%= f.label :title %>
-        </th>
-        <td>
-          <%= f.text_field :title , :size => 60 %>
-        </td>
+        <th> <%= f.label :title %> </th>
+        <td> <%= f.text_field :title, :size => 60 %> </td>
       </tr>
       <tr>
-        <th>
-          <%= f.label :words %>
-        </th>
-        <td>
-          <%= f.text_area :words, :cols => 60, :rows => 15 %>
-        </td>
+        <th> <%= f.label :words %> </th>
+        <td> <%= f.text_area :words, :cols => 60, :rows => 15 %> </td>
       </tr>
       <tr>
-        <th>
-          <%= f.label :cright  %>
-        </th>
-        <td>
-          <%= f.text_field :cright, :size => 60 %>
-        </td>
+        <th> <%= f.label :cright  %> </th>
+        <td> <%= f.text_field :cright, :size => 60 %> </td>
       </tr>
       <tr>
         <td>&nbsp;</td>
-        <td><%= f.submit %></td>
+        <td>
+          <%= f.submit %>
+          <%= link_to 'preview', preview_song_path, remote: true, method: :post, id: 'preview-button' %>
+        </td>
       </tr>
     </table>
+    <div id="preview"></div>
+
+    <script type="text/javascript">
+        $('#preview-button').on("ajax:before", function(){
+            $(this).data('params', 'words=' + encodeURIComponent($('#song_words').val()))
+        });
+    </script>
+
 
 <% end %>

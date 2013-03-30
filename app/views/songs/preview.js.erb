@@ -1,0 +1,4 @@
+$('#preview').html('<%= j(render :partial => 'preview_content') %>');
+$('.preview-phrase').each(function(idx, elm){
+    resize(elm);
+});

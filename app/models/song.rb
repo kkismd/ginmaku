@@ -19,7 +19,7 @@ class Song < ActiveRecord::Base
 
   # 空行で区切られたテキストをグループとする
   def phrases
-    normalize_eol(words).split(/\n{2,}/)
+    normalize_eol(words.to_s).split(/\n{2,}/)
   end
 
   # グループの一行目だけを返す
