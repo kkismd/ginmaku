@@ -1,4 +1,11 @@
 Ginmaku::Application.routes.draw do
+  resources :slides do
+    collection do
+      get :list
+    end
+  end
+
+
   resources :preaches
 
   resources :songs do
