@@ -12,10 +12,22 @@
 <p>『<%= @song.title %>』(<%= @song.code %>)</p>
 
 <%- @song.outline.each_with_index do |header, idx| %>
-    <p><%= link_to_function(suppress_ruby(header), "change_remote(#{idx},'#{detail_song_url(@song)}')") %></p>
+    <p><%= link_to_function(suppress_ruby(header),
+                            "change_remote(#{idx},'#{detail_song_url(@song)}')",
+                            :id => "change-button-#{idx}",
+                            :class => 'change-button' ) %></p>
 <%- end -%>
 
 <%= link_to 'ReOpen', detail_song_path(@song), :target => 'projector' %> |
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %>
 </div>
+<script type="text/javascript">
+  $(document).keydown(function(event) {
+      switch(event.keyCode) {
+          case 38: return prev_remote('<%= detail_song_url(@song) %>');
+          case 40: return next_remote('<%= detail_song_url(@song) %>');
+      }
+  });
+</script>
+<div id="keycode"></div>

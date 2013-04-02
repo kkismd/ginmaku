@@ -2,7 +2,6 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-
 @resize = (e) ->
   # フォントサイズを初期化する
   e.style.fontSize = '72px'
@@ -25,6 +24,13 @@ make_window_handler = (target) ->
 
 get_detail_window = make_window_handler('projector')
 
+#
+# 子ウィンドウ側で呼び出される処理
+#
+phrases = () -> $('.song')
+current = 0
+
+
 # 子ウィンドウの歌詞を切り替える
 @change_remote = (idx, url) ->
   detail_window = get_detail_window()
@@ -35,18 +41,40 @@ get_detail_window = make_window_handler('projector')
 
   # 表示切り替えを指示
   detail_window.change(idx)
-
-
-#
-# 子ウィンドウ側で呼び出される処理
-#
-phrases = () -> $('.song')
-current = 0
+  current = idx
 
 # 指定された番号の歌詞に切り替える
 @change = (idx) ->
-  phrases()[current].style.display = 'none'
+  $(phrases()[current]).fadeOut(200)
   current = idx
-  phrases()[current].style.display = 'block'
+  $(phrases()[current]).fadeIn(200)
   resize(phrases()[current])
 
+@prev_remote = (url) ->
+  return false if current <= 0
+  current--
+  change_remote(current, url)
+  $('#change-button-'+ current).effect( 'highlight', '', 200 )
+  false
+
+@next_remote = (url) ->
+  return false if current >= $('.change-button').length - 1
+  current++
+  change_remote(current, url)
+  $('#change-button-'+ current).effect( 'highlight', '', 200 )
+  false
+
+@prev = ->
+  return false if current <= 0
+  $(phrases()[current]).fadeOut(200)
+  current--
+  $(phrases()[current]).fadeIn(200)
+  false
+
+@next = ->
+  return false if current >= phrases().length - 1
+  $(phrases()[current]).fadeOut(200)
+  current++
+  $(phrases()[current]).fadeIn(200)
+  resize(phrases()[current])
+  false

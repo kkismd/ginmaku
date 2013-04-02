@@ -9,3 +9,11 @@
     <pre id="<%= 'p' + idx.to_s %>" class="song <%= idx > 0 ? 'hidden' : '' %>"><%= rubify  phrase %></pre>
 <%- end -%>
 
+<script type="text/javascript">
+    $(document).keydown(function(event) {
+        switch(event.keyCode) {
+            case 38: return prev();
+            case 40: return next();
+        }
+    });
+</script>
