@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @slide.title %>
+</p>
+
+<p>
+  <b>Body:</b>
+  <%=simple_format @slide.body %>
+</p>
+
+<p>
+  <b>Author:</b>
+  <%= @slide.author %>
+</p>
+
+<p>
+  <b>Deleted at:</b>
+  <%= @slide.deleted_at %>
+</p>
+
+
+<%= link_to 'Edit', edit_slide_path(@slide) %> |
+<%= link_to 'Back', slides_path %>

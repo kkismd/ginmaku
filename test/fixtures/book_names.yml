@@ -1,0 +1,11 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  testament: 1
+  japanese: MyString
+  english: MyString
+
+two:
+  testament: 1
+  japanese: MyString
+  english: MyString
