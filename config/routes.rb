@@ -1,12 +1,13 @@
 Ginmaku::Application.routes.draw do
   resources :slides do
+    member do
+      get :detail
+    end
+
     collection do
       get :list
     end
   end
-
-
-  resources :preaches
 
   resources :songs do
     member do

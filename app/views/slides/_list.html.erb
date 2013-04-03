@@ -1,3 +1,4 @@
+<%= paginate @slides %>
 <table>
   <tr>
     <th>Id</th>
@@ -8,11 +9,10 @@
     <th></th>
   </tr>
 
-  <%= paginate @slides %>
   <% @slides.each do |slide| %>
       <tr>
         <td><%= slide.id %></td>
-        <td><%= slide.title %></td>
+        <td><%= link_to slide.title, slide %></td>
         <td><%= slide.updated_at %></td>
         <td><%= link_to 'Show', slide %></td>
         <td><%= link_to 'Edit', edit_slide_path(slide) %></td>
@@ -20,3 +20,4 @@
       </tr>
   <% end %>
 </table>
+<%= paginate @slides %>

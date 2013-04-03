@@ -2,8 +2,7 @@ class SlidesController < ApplicationController
   # GET /slides
   # GET /slides.json
   def index
-    @slides = Slide.all
-    @recents = []
+    @recents = Slide.recents
 
     respond_to do |format|
       format.html # index.html.erb

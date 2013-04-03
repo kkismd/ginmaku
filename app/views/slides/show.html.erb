@@ -1,25 +1,24 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <b>Title:</b>
-  <%= @slide.title %>
-</p>
+<div id="thumbnail-area">
+<%- @slide.pages.each do |page| -%>
+<pre class="thumbnail"><%= page %></pre>
+<%- end -%>
+</div>
+<script type="text/javascript">
+  $('#thumbnail-area').draggable({axis:'y', revert: true, cursor:'move'});
+</script>
 
-<p>
-  <b>Body:</b>
-  <%=simple_format @slide.body %>
-</p>
+<div id="controll-area">
+  <p>『 <%= @slide.title %>』</p>
 
-<p>
-  <b>Author:</b>
-  <%= @slide.author %>
-</p>
-
-<p>
-  <b>Deleted at:</b>
-  <%= @slide.deleted_at %>
-</p>
-
+<%- @slide.outline.each_with_index do |line, idx| -%>
+  <p><%= link_to_function(line,
+                         "change_remote(#{idx}, '#{detail_slide_url(@slide)}')",
+                         :id => "change-button-#{idx}",
+                         :class => 'change-button')%></p>
+<%- end -%>
 
 <%= link_to 'Edit', edit_slide_path(@slide) %> |
 <%= link_to 'Back', slides_path %>
+</div>
