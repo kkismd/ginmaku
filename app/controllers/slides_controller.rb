@@ -2,6 +2,7 @@ class SlidesController < ApplicationController
   # GET /slides
   # GET /slides.json
   def index
+    @slide_search_form = SlideSearchForm.new(params[:slide_search_form])
     @recents = Slide.recents
 
     respond_to do |format|
@@ -88,5 +89,10 @@ class SlidesController < ApplicationController
       format.html { redirect_to slides_url }
       format.json { head :no_content }
     end
+  end
+
+  def search
+    @slide_search_form = SlideSearchForm.new(params[:slide_search_form])
+    @slides = @slide_search_form.search.page(params[:page])
   end
 end

@@ -116,10 +116,6 @@ class SongsController < ApplicationController
 
   def search
     @song_search_form = SongSearchForm.new(params[:song_search_form])
-    if @song_search_form.q.present?
-      @songs = @song_search_form.search.page(params[:page])
-    else
-      @songs = []
-    end
+    @songs = @song_search_form.search.page(params[:page])
   end
 end

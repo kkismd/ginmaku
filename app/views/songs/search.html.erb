@@ -1,7 +1,7 @@
 <%- title -%>
 <%= form_for @song_search_form, :url => search_songs_path, :html => {:method => :get} do |f| -%>
     <p>検索
-      <%= f.select(:code, Song.code_options, :include_blank => true) %>
+      <%= f.select(:code, Song.code_options, :include_blank => 'コード') %>
       <%= f.text_field :q, :size => "30" %>
       <%= f.submit "search" %>
     </p>

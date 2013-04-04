@@ -5,6 +5,7 @@ Ginmaku::Application.routes.draw do
     end
 
     collection do
+      get :search
       get :list
     end
   end
