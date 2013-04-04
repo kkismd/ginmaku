@@ -87,7 +87,7 @@ class SongsController < ApplicationController
     Song.transaction do
       @song.attributes = params[:song]
       @song.romanize! if params[:button] == 'roman'
-      @song.update_words_for_search
+      @song.update_words_for_search!
       is_saved = @song.save
     end
 

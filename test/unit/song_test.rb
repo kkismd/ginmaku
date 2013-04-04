@@ -19,7 +19,7 @@ class SongTest < ActiveSupport::TestCase
   end
 
   test '.update_words_for_search' do
-    @song.update_words_for_search
+    @song.update_words_for_search!
     assert_equal ['words_for_search'], @song.changed
     assert_equal '主しゅ', @song.words_for_search
   end

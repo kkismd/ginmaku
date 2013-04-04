@@ -35,7 +35,7 @@ class Song < ActiveRecord::Base
     kananize(words)
   end
 
-  def update_words_for_search
+  def update_words_for_search!
     self[:words_for_search] = ruby_trim(kanji + kana)
   end
 
