@@ -2,34 +2,33 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-phrases = () -> $('.song')
+phrases = -> $('.song')
 current = 0
 
-fadeOut = ->
-  $(phrases()[current]).fadeOut(200)
+e = ->
+  phrases()[current]
+p = ->
+  $(e())
 
-fadeIn = ->
-  $(phrases()[current]).fadeIn(200)
+transition = (callback) ->
+  p().animate({opacity:0}, 100, ->
+    p().css({display:'none'})
+    callback()
+    p().css({opacity:0, display:'block'})
+    resize(e())
+    p().animate({opacity:1}, 100)
+  )
 
 # 指定された番号の歌詞に切り替える
 @change = (idx) ->
-  fadeOut()
-  current = idx
-  fadeIn()
-  resize(phrases()[current])
+  transition( -> current = idx )
 
 @prev = ->
   return false if current <= 0
-  fadeOut()
-  current--
-  fadeIn()
-  resize(phrases()[current])
+  transition( -> current-- )
   false
 
 @next = ->
   return false if current >= phrases().length - 1
-  fadeOut()
-  current++
-  fadeIn()
-  resize(phrases()[current])
+  transition( -> current++ )
   false

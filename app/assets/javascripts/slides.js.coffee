@@ -2,32 +2,35 @@
 # All this logic will automatically be available in application.js.
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
-pages = -> $('.page')
+slides = -> $('.slide')
 current = 0
 
-fadeOut = ->
-  $(pages()[current]).fadeOut(200)
+e = ->
+  slides()[current]
+p = ->
+  $(e())
 
-fadeIn = ->
-  $(pages()[current]).fadeIn(200)
+# ページ切り替えのための関数
+transition = (callback) ->
+  # フェードアウトが終わってから次の手順に移る
+  p().animate({opacity:0}, 100, ->
+    p().css({display:'none'})
+    callback()
+    # リサイズのために透明なまま要素を可視状態にする
+    p().css({opacity:0, display:'block'})
+    resize(e())
+    p().animate({opacity:1}, 100)
+  )
 
 @change = (idx) ->
-  fadeOut()
-  current = idx
-  fadeIn()
-  resize(pages()[current])
+  transition( -> current = idx )
 
 @prev = ->
   return false if current <= 0
-  fadeOut()
-  current--
-  fadeIn()
+  transition( -> current-- )
   false
 
 @next = ->
-  return false if current >= pages().length - 1
-  fadeOut()
-  current++
-  fadeIn()
-  resize(pages()[current])
+  return false if current >= slides().length - 1
+  transition( -> current++ )
   false
