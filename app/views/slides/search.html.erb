@@ -1,0 +1,10 @@
+<%- title -%>
+<%= form_for @slide_search_form, url: search_slides_path, html: {:method => :get} do |f| -%>
+    <p>検索
+      <%= f.text_field :q, :size => '30' %>
+      <%= f.submit 'search' %>
+    </p>
+<%- end -%>
+<%= render :partial => 'list' %>
+
+<%= link_to 'Back', slides_path %>

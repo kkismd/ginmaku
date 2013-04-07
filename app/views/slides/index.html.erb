@@ -1,0 +1,28 @@
+<%- title -%>
+<h1>メッセージスライド</h1>
+
+<%= form_for @slide_search_form, url: search_slides_path, html: {method: :get} do |f| %>
+<p>検索
+  <%= f.text_field :q, :size => '30' %>
+  <%= f.submit 'search' %>
+</p>
+<%- end -%>
+
+<p><%= link_to '全スライド一覧', list_slides_path %></p>
+
+<h2>最近の更新(Recent changes)</h2>
+<%- if @recents.blank? -%>
+    <p>更新はありません</p>
+<%- end -%>
+<ul>
+<%- @recents.each do |slide| -%>
+ <li><%= link_to(slide.title, slide_path(slide)) %></li>
+<%- end -%>
+</ul>
+
+<h2>menu</h2>
+<ul>
+  <li><%= link_to '新しいスライドの追加 - Add new Slides', new_slide_path %></li>
+  <li><%= link_to '賛美歌詞表示 - Praise songs', songs_path %></li>
+  <li><%= link_to '聖句検索 - Bible words', books_path %></li>
+</ul>

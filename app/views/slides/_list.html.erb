@@ -1,0 +1,23 @@
+<%= paginate @slides %>
+<table>
+  <tr>
+    <th>Id</th>
+    <th>Title</th>
+    <th>Last update</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+  <% @slides.each do |slide| %>
+      <tr>
+        <td><%= slide.id %></td>
+        <td><%= link_to slide.title, slide %></td>
+        <td><%= slide.updated_at %></td>
+        <td><%= link_to 'Show', slide %></td>
+        <td><%= link_to 'Edit', edit_slide_path(slide) %></td>
+        <td><%= link_to 'Destroy', slide, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+  <% end %>
+</table>
+<%= paginate @slides %>

@@ -1,16 +1,20 @@
 <%- title -%>
 <h1>PRAISE DATABASE</h1>
 
-<%= form_for @song_search_form, :url => search_songs_path, :html => {:method => :get} do |f| -%>
+<%= form_for @song_search_form, url: search_songs_path, html: {:method => :get} do |f| -%>
 <p>検索
-  <%= f.text_field :q, :size => "30" %>
-  <%= f.submit "search" %>
+  <%= f.text_field :q, :size => '30' %>
+  <%= f.submit 'search' %>
 </p>
-    <p><%= link_to '全曲一覧', list_songs_path %></p>
 <%- end -%>
 
+<p><%= link_to '全曲一覧', list_songs_path %></p>
+
 <h2>最近の更新(Recent changes)</h2>
-<ul></ul>
+<%- if @recents.blank? -%>
+<p>更新はありません</p>
+<%- end -%>
+<ul>
 <%- @recents.each do |song| -%>
    <li><%= link_to(song.title, song_path(song)) %></li>
 <%- end -%>
@@ -20,6 +24,5 @@
 <ul>
   <li><%= link_to '新しい曲の追加 - Add a New Song', new_song_path %></li>
   <li><%= link_to '聖句検索 - Bible words', books_path %></li>
-  <li><%= link_to 'メッセージレジュメ - Message summaries', preaches_path %></li>
+  <li><%= link_to 'メッセージレジュメ - Message summaries', slides_path %></li>
 </ul>
-

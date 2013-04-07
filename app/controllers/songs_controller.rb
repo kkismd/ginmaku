@@ -87,7 +87,7 @@ class SongsController < ApplicationController
     Song.transaction do
       @song.attributes = params[:song]
       @song.romanize! if params[:button] == 'roman'
-      @song.update_words_for_search
+      @song.update_words_for_search!
       is_saved = @song.save
     end
 
@@ -116,10 +116,6 @@ class SongsController < ApplicationController
 
   def search
     @song_search_form = SongSearchForm.new(params[:song_search_form])
-    if @song_search_form.q.present?
-      @songs = @song_search_form.search.page(params[:page])
-    else
-      @songs = []
-    end
+    @songs = @song_search_form.search.page(params[:page])
   end
 end
