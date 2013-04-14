@@ -33,7 +33,7 @@
         <td>
           <%= f.submit %>
           <%= f.button 'ローマ字をつけて更新する', value: :roman, remote: true %>
-          <%= link_to 'preview', preview_song_path, remote: true, method: :post, id: 'preview-button' %>
+          <%= link_to 'preview', :preview, remote: true, method: :post, id: 'preview-button' %>
         </td>
       </tr>
     </table>
