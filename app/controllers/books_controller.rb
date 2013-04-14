@@ -14,9 +14,4 @@ class BooksController < ApplicationController
     @book_search_form = BookSearchForm.new params[:book_search_form]
     @books = @book_search_form.search
   end
-
-  # GET /books/1/edit
-  def edit
-    @book = Book.find(params[:id])
-  end
 end
