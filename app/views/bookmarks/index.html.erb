@@ -1,0 +1,38 @@
+<%- title -%>
+<h1>Listing bookmarks</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Controller</th>
+    <th>Action</th>
+    <th>Params</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @bookmarks.each do |bookmark| %>
+  <tr>
+    <td><%= bookmark.name %></td>
+    <%= link_to bookmark.name, url_for(bookmark.raw_params)  %>
+    <td><%= bookmark.controller %></td>
+    <td><%= bookmark.action %></td>
+    <td><%= bookmark.params %></td>
+    <td><%= link_to 'Show', bookmark %></td>
+    <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
+    <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Bookmark', new_bookmark_path %>
+
+<h2>menu</h2>
+<ul>
+  <li><%= link_to '賛美歌詞表示 - Praise songs', songs_path %></li>
+  <li><%= link_to 'メッセージスライド - Message summaries', slides_path %></li>
+  <li><%= link_to '聖句検索 - Bible words', books_path %></li>
+</ul>

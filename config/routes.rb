@@ -1,4 +1,6 @@
 Ginmaku::Application.routes.draw do
+  resources :bookmarks
+
   resources :slides do
     member do
       get :detail

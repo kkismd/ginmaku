@@ -1,3 +1,4 @@
+<%- title -%>
 <%= form_for @book_search_form, :url => search_books_path, :html => {:method => :get, :target => "projector"} do |f| %>
     <table class="books">
       <%- [ @book_names[0..21], @book_names[22..43], @book_names[44..65] ].transpose.flatten.each_with_index do |book_name,i| -%>
