@@ -15,8 +15,14 @@
     <%= f.radio_button :lang, BookSearchForm::LANG_BOTH %>日本語 &amp; English
     <%= f.radio_button :lang, BookSearchForm::LANG_JAPANESE %>日本語のみ
     <%= f.radio_button :lang, BookSearchForm::LANG_ENGLISH %>English Only<br />
-    <%= f.submit 'Open' %> <input type="reset" value="Reset">
+    <%= f.submit 'Open', id: :open_button %> <input type="reset" value="Reset">
 <%- end %>
+<script type="text/javascript">
+  $('#open_button').on('click', function(e){
+      var query_string = '?' + $('#new_book_search_form').serialize();
+      history.pushState(null, '', query_string);
+  });
+</script>
 
 <h2>menu</h2>
 <ul>
