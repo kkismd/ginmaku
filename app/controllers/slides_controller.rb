@@ -41,6 +41,11 @@ class SlidesController < ApplicationController
     end
   end
 
+  def preview
+    @slide = Slide.new(body:params[:body])
+    render layout: false
+  end
+
   # GET /slides/new
   # GET /slides/new.json
   def new

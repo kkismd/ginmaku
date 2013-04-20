@@ -9,6 +9,7 @@ Ginmaku::Application.routes.draw do
     collection do
       get :search
       get :list
+      post :preview
     end
   end
 

@@ -10,20 +10,45 @@
       </ul>
     </div>
   <% end %>
-
-  <div class="field">
-    <%= f.label :title %><br />
-    <%= f.text_field :title %>
-  </div>
-  <div class="field">
-    <%= f.label :body %><br />
-    <%= f.text_area :body %>
-  </div>
-  <div class="field">
-    <%= f.label :author %><br />
-    <%= f.text_field :author %>
-  </div>
+<table>
+  <tr>
+    <th><%= f.label :title %></th>
+    <td><%= f.text_field :title, size:40 %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :body %></th>
+    <td><%= f.text_area :body, cols:35, rows:15 %></td>
+  </tr>
+  <tr>
+    <th><%= f.label :author %></th>
+    <td><%= f.text_field :author %></td>
+  </tr>
+  <tr>
+    <th></th>
+    <td>
+      <%= f.submit %>
+      <%= link_to 'preview', :preview_slides,
+                  remote: true, method: :post,
+                  id: 'preview-button', :'data-type' => :html %>
+    </td>
+  </tr>
+</table>
   <div class="actions">
-    <%= f.submit %>
+
   </div>
 <% end %>
+<div id="preview"></div>
+
+<script type="text/javascript">
+    $('#preview-button')
+            .on("ajax:before", function(){
+                $(this).data('params', 'body=' + encodeURIComponent($('#slide_body').val()));
+            })
+            .on('ajax:success', function(data, res, xhr){
+                $('#preview').html(res);
+                $('.preview-page').each(function(i,elm){
+                    resize(elm);
+                })
+                console.log(res);
+            });
+</script>

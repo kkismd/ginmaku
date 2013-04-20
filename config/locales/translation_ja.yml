@@ -20,7 +20,10 @@ ja:
       song:
         code: コード(CODE)
         cright: 出典(SOURCE)
-        deleted: deleted  #g
-        kana: kana  #g
         title: 題名(TITLE)
         words: 歌詞(WORDS)
+
+      slide:
+        title: 題名(TITLE)
+        body: 内容(CONTENTS)
+        author: 作者(AUTHOR)
