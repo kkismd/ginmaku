@@ -20,15 +20,15 @@ transition = (callback) ->
   )
 
 # 指定された番号の歌詞に切り替える
-@change = (idx) ->
+window.change = (idx) ->
   transition( -> current = idx )
 
-@prev = ->
+window.prev = ->
   return false if current <= 0
   transition( -> current-- )
   false
 
-@next = ->
+window.next = ->
   return false if current >= phrases().length - 1
   transition( -> current++ )
   false

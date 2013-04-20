@@ -22,7 +22,7 @@ get_detail_window = ->
 current = 0
 
 # 子ウィンドウの歌詞を切り替える
-@change_remote = (idx, url) ->
+window.change_remote = (idx, url) ->
   detail_window = get_detail_window()
 
   # 指定のURLにいなければ移動
@@ -33,17 +33,21 @@ current = 0
   detail_window.change(idx)
   current = idx
 
-@prev_remote = (url) ->
+window.prev_remote = (url) ->
   return false if current <= 0
   current--
   change_remote(current, url)
   $('#change-button-'+ current).effect( 'highlight', '', 200 )
   false
 
-@next_remote = (url) ->
+window.next_remote = (url) ->
   return false if current >= $('.change-button').length - 1
   current++
   change_remote(current, url)
   $('#change-button-'+ current).effect( 'highlight', '', 200 )
   false
 
+window.wipe_remote = -> get_detail_window().wipe()
+
+window.wipe = ->
+  $('#container').toggle()

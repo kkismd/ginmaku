@@ -6,6 +6,7 @@
  }
  </style>
 <%- end -%>
+<div id='container'>
 <%- @song.phrases.each_with_index do |phrase, idx| %>
     <pre id="<%= 'p' + idx.to_s %>" class="song <%= idx > 0 ? 'hidden' : '' %>"><%= rubify  phrase %></pre>
 <%- end -%>
@@ -21,3 +22,4 @@
         }
     });
 </script>
+</div>

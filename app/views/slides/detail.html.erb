@@ -6,7 +6,7 @@
  }
  </style>
 <%- end -%>
-
+<div id="container">
 <%- @slide.pages.each_with_index do |page, idx| -%>
   <%- hidden_class = idx > 0 ? 'hidden' : '' -%>
   <pre id="<%= 'p' + idx.to_s %>" class="slide <%= hidden_class %>"><%= page %></pre>
@@ -23,3 +23,4 @@
       }
   });
 </script>
+</div>
