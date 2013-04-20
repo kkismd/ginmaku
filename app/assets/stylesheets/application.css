@@ -16,9 +16,13 @@ html {
 }
 body {
     background: rgb(0, 0, 5) url(bg.png) fixed;
+    background-size: contain;
     color: white;
 }
 pre {
+    font-family: Helvetica, Arial, sans-serif;
+}
+pre span.roman {
     font-family: "Arial Narrow", sans-serif;
 }
 a:link {
