@@ -1,4 +1,11 @@
 <%- title @slide.title -%>
+<%- content_for :header do -%>
+ <style type="text/css">
+ html,body {
+   overflow: hidden;
+ }
+ </style>
+<%- end -%>
 
 <%- @slide.pages.each_with_index do |page, idx| -%>
   <%- hidden_class = idx > 0 ? 'hidden' : '' -%>

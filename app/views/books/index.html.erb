@@ -3,9 +3,7 @@
     <table class="books">
       <%- [ @book_names[0..21], @book_names[22..43], @book_names[44..65] ].transpose.flatten.each_with_index do |book_name,i| -%>
           <%- if i % 3 == 0 %> <tr> <%- end -%>
-
           <td><%= f.radio_button :n, book_name.id %><%=  book_name.japanese %>/<%= book_name.english %></td>
-
           <%- if i % 3 == 2 %> </tr> <%- end -%>
       <%- end -%>
     </table>

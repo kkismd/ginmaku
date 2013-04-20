@@ -5,7 +5,7 @@
   widthGap = e.clientWidth / e.scrollWidth
   heightGap = e.clientHeight / e.scrollHeight
   # 拡大率は縦横ではみ出しが大きい方に合わせる
-  gapRatio = Math.min(widthGap, heightGap) * 0.9
+  gapRatio = Math.min(widthGap, heightGap) * 0.95
   # サイズを変更する
   fontSize = e.style.fontSize
   newFontSize = parseInt(parseInt(fontSize) * gapRatio)

@@ -11,6 +11,9 @@
  *= require_self
  *= require_tree .
  */
+html {
+    scrollbar-base-color: #223355;
+}
 body {
     background: rgb(0, 0, 5) url(bg.png) fixed;
     color: white;

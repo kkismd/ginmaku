@@ -1,4 +1,11 @@
 <%- title @song.title -%>
+<%- content_for :header do -%>
+ <style type="text/css">
+ html,body {
+   overflow: hidden;
+ }
+ </style>
+<%- end -%>
 <%- @song.phrases.each_with_index do |phrase, idx| %>
     <pre id="<%= 'p' + idx.to_s %>" class="song <%= idx > 0 ? 'hidden' : '' %>"><%= rubify  phrase %></pre>
 <%- end -%>
