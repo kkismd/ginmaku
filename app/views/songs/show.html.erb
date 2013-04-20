@@ -1,5 +1,5 @@
 <%- title @song.title -%>
-<p id="notice"><%= notice %></p>
+<p id="notice" style="clear: both;"><%= notice %></p>
 
 <div id="boxA">
 <pre class='small'><%= suppress_ruby @song.words %></pre>
@@ -20,7 +20,9 @@
 
 <%= link_to 'ReOpen', detail_song_path(@song), :target => 'projector' %> |
 <%= link_to 'Edit', edit_song_path(@song) %> |
-<%= link_to 'Back', songs_path %>
+<%= link_to 'Back', songs_path %> |
+<%= link_to_function 'お気に入りに追加', 'add_to_bookmark()' %>
+
 </div>
 <script type="text/javascript">
   $(document).keydown(function(event) {

@@ -4,9 +4,6 @@
 <table>
   <tr>
     <th>Name</th>
-    <th>Controller</th>
-    <th>Action</th>
-    <th>Params</th>
     <th></th>
     <th></th>
     <th></th>
@@ -14,14 +11,10 @@
 
 <% @bookmarks.each do |bookmark| %>
   <tr>
-    <td><%= bookmark.name %></td>
-    <%= link_to bookmark.name, url_for(bookmark.raw_params)  %>
-    <td><%= bookmark.controller %></td>
-    <td><%= bookmark.action %></td>
-    <td><%= bookmark.params %></td>
-    <td><%= link_to 'Show', bookmark %></td>
-    <td><%= link_to 'Edit', edit_bookmark_path(bookmark) %></td>
-    <td><%= link_to 'Destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+    <td><%= link_to_bookmark(bookmark) %></td>
+    <td>[<%= link_to 'show', bookmark %>]</td>
+    <td>[<%= link_to 'edit', edit_bookmark_path(bookmark) %>]</td>
+    <td>[<%= link_to 'destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %>]</td>
   </tr>
 <% end %>
 </table>
