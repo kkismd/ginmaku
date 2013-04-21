@@ -11,6 +11,10 @@
  *= require_self
  *= require_tree .
  */
+html,body {
+  width: 100%;
+  height: 100%;
+}
 html {
     scrollbar-base-color: #223355;
 }
@@ -18,6 +22,10 @@ body {
     background: rgb(0, 0, 5) url(bg.png) fixed;
     background-size: contain;
     color: white;
+}
+#container {
+    width: 100%;
+    height: 100%;
 }
 pre {
     font-family: Helvetica, Arial, sans-serif;

@@ -2,8 +2,8 @@
   # フォントサイズを初期化する
   e.style.fontSize = '72px'
   # 領域のサイズとdivのサイズの割合を求める
-  widthGap = e.clientWidth / e.scrollWidth
-  heightGap = e.clientHeight / e.scrollHeight
+  widthGap = e.parentNode.clientWidth / e.scrollWidth
+  heightGap = e.parentNode.clientHeight / e.scrollHeight
   # 拡大率は縦横ではみ出しが大きい方に合わせる
   gapRatio = Math.min(widthGap, heightGap) * 0.95
   # サイズを変更する
