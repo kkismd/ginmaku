@@ -21,6 +21,7 @@ Ginmaku::Application.routes.draw do
     collection do
       get :search
       get :list
+      get :list_all
       post :preview
     end
   end

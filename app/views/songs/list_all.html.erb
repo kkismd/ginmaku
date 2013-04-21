@@ -1,0 +1,16 @@
+<table>
+  <tr>
+    <th>曲ID</th>
+    <th>コード</th>
+    <th>タイトル</th>
+    <th>出典</th>
+  </tr>
+  <%- @songs.each do |song| -%>
+      <tr>
+        <td><%= song.id %></td>
+        <td><%= song.code %></td>
+        <td><%= song.title %></td>
+        <td><%= song.cright %></td>
+      </tr>
+  <%- end -%>
+</table>

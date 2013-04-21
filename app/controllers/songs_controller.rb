@@ -21,6 +21,10 @@ class SongsController < ApplicationController
     end
   end
 
+  def list_all
+    @songs = Song.order('id')
+  end
+
   # GET /songs/1
   # GET /songs/1.json
   def show
