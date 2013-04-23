@@ -1,12 +1,14 @@
 <%- title @song.title -%>
 <p id="notice"><%= notice %></p>
 
-<div id="boxA">
-<pre class='small'><%= suppress_ruby @song.words %></pre>
-  <script type="text/javascript">
-    $('pre.small').draggable({axis:'y', revert: true, cursor:'move'});
-  </script>
+<div id="thumbnail-area">
+<%- @song.phrases.each do |phrase| -%>
+<pre class="thumbnail"><%= suppress_ruby phrase %></pre>
+<%- end -%>
 </div>
+<script type="text/javascript">
+  $('pre.small').draggable({axis:'y', revert: true, cursor:'move'});
+</script>
 
 <div id="boxB">
 <p>『<%= @song.title %>』(<%= @song.code %>)</p>
