@@ -10,6 +10,12 @@
   fontSize = e.style.fontSize
   newFontSize = parseInt(parseInt(fontSize) * gapRatio)
   e.style.fontSize = newFontSize + 'px'
+  if false # debug print
+    console.log("widthGap " + widthGap)
+    console.log("heightGap " + heightGap)
+    console.log("gapRatio " + gapRatio)
+    console.log("fontSize " + fontSize)
+    console.log("newFontSize " + newFontSize)
 
 wnd = null
 target = 'projector'
