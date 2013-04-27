@@ -1,4 +1,4 @@
-@resize = (e) ->
+window.resize = (e) ->
   # フォントサイズを初期化する
   e.style.fontSize = '72px'
   # 領域のサイズとdivのサイズの割合を求める
@@ -20,7 +20,7 @@
 wnd = null
 target = 'projector'
 
-get_detail_window = ->
+get_target_window = ->
   if !wnd || !wnd.location
     wnd = window.open('', target)
   wnd
@@ -29,7 +29,7 @@ current = 0
 
 # 子ウィンドウの歌詞を切り替える
 window.change_remote = (idx, url) ->
-  detail_window = get_detail_window()
+  detail_window = get_target_window()
 
   # 指定のURLにいなければ移動
   if url isnt detail_window.location.href
@@ -53,7 +53,13 @@ window.next_remote = (url) ->
   $('#change-button-'+ current).effect( 'highlight', '', 200 )
   false
 
-window.wipe_remote = -> get_detail_window().wipe()
+window.wipe_remote = -> get_target_window().wipe()
 
 window.wipe = ->
   $('#container').toggle()
+
+
+window.font_large_remote = -> get_target_window().font_large()
+window.font_small_remote = -> get_target_window().font_small()
+window.scroll_up_remote = -> get_target_window().scroll_up()
+window.scroll_down_remote = -> get_target_window().scroll_down()
