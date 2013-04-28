@@ -1,6 +1,7 @@
 window.resize = (e) ->
   # フォントサイズを初期化する
-  e.style.fontSize = '72px'
+  e.style.fontSize = '64px'
+
   # 領域のサイズとdivのサイズの割合を求める
   widthGap = e.parentNode.clientWidth / e.scrollWidth
   heightGap = e.parentNode.clientHeight / e.scrollHeight
@@ -10,12 +11,13 @@ window.resize = (e) ->
   fontSize = e.style.fontSize
   newFontSize = parseInt(parseInt(fontSize) * gapRatio)
   e.style.fontSize = newFontSize + 'px'
-  if false # debug print
-    console.log("widthGap " + widthGap)
-    console.log("heightGap " + heightGap)
-    console.log("gapRatio " + gapRatio)
-    console.log("fontSize " + fontSize)
-    console.log("newFontSize " + newFontSize)
+
+window.centering = (element) ->
+  inner = element.childNodes[0]
+  wholeHeight = element.clientHeight
+  innerHeight = inner.clientHeight
+  topOffset = (wholeHeight - innerHeight) / 2
+  inner.style.top = topOffset + "px"
 
 wnd = null
 target = 'projector'
