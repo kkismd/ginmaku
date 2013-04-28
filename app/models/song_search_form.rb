@@ -14,6 +14,9 @@ class SongSearchForm
   end
 
   def search
+    # 数字のみの場合は id とみなす
+    return Song.where(id: q.to_i) if q =~ /^[1-9][0-9]*$/
+
     songs = Song.arel_table
     result = Song.where(songs[:words_for_search].matches("%#{q}%"))
     if code.present?
