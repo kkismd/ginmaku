@@ -9,6 +9,7 @@ gem 'rails', '3.2.13'
 gem 'mysql2'
 gem 'acts_as_paranoid', '~>0.4.0'
 gem 'kaminari'
+gem 'rails_config'
 
 group :development do
   gem 'sqlite3'
