@@ -1,13 +1,3 @@
 # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
 
-one:
-  name: MyString
-  controller: MyString
-  actioni: MyString
-  params: MyText
 
-two:
-  name: MyString
-  controller: MyString
-  actioni: MyString
-  params: MyText

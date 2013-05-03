@@ -3,6 +3,8 @@ class Song < ActiveRecord::Base
   acts_as_paranoid
   attr_accessible :code, :cright, :title, :words, :words_for_search, :deleted_at, :updated_at
 
+  has_many :song_edits
+
   # ふりがな処理のための正規表現
   KANJI_KANA = /([一-龠々]+)\(([ぁ-ん]+)\)/ # 漢字 ⇒ ひらがな
   ENG_KANA = /([a-zA-Z']+)\(([ァ-ヶー]+)\)/ # 英語 ⇒ カタカナ
@@ -61,6 +63,22 @@ class Song < ActiveRecord::Base
   def has_furigana?
     furigana?(words)
     words =~ KANJI_KANA || words =~ ENG_KANA || words =~ KANA_HIRA
+  end
+
+  def build_edits
+    song_edits.build words: words
+  end
+
+  def update_with(is_roman_button, new_attributes)
+    is_saved = nil
+    self.class.transaction do
+      build_edits
+      self.attributes = new_attributes
+      romanize! if is_roman_button
+      update_words_for_search!
+      is_saved = save
+    end
+    is_saved
   end
 
   private

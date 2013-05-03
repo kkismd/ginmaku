@@ -87,20 +87,16 @@ class SongsController < ApplicationController
   # PUT /songs/1.json
   def update
     @song = Song.find(params[:id])
-    is_saved = nil
-    Song.transaction do
-      @song.attributes = params[:song]
-      @song.romanize! if params[:button] == 'roman'
-      @song.update_words_for_search!
-      is_saved = @song.save
-    end
+    song_attributes = params[:song]
+    is_roman_button = (params[:button] == 'roman')
+    is_saved = @song.update_with(is_roman_button, song_attributes)
 
     respond_to do |format|
       if is_saved
         format.html { redirect_to @song, notice: 'Song was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: 'edit' }
         format.json { render json: @song.errors, status: :unprocessable_entity }
       end
     end
