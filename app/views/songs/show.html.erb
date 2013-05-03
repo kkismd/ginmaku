@@ -33,11 +33,13 @@
 
       if (key == 38) {
           prev_remote(url);
+          return false;
       } else if (key == 40) {
           next_remote(url);
+          return false;
       } else if (key >= 49 && key < 49 + size) {
           change_remote(key - 49, url);
+          return false;
       }
-      return false;
   });
 </script>
