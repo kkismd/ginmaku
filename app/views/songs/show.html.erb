@@ -27,6 +27,9 @@
 </div>
 <script type="text/javascript">
   $(document).keydown(function(event) {
+      var KEYBOARD_1 = 49;
+      var KEYPAD_1   = 97;
+
       var url = '<%= detail_song_url(@song) %>';
       var size = <%= @song.phrases.size %>;
       var key = event.keyCode;
@@ -37,8 +40,11 @@
       } else if (key == 40) {
           next_remote(url);
           return false;
-      } else if (key >= 49 && key < 49 + size) {
-          change_remote(key - 49, url);
+      } else if (key >= KEYBOARD_1 && key < KEYBOARD_1 + size) {
+          change_remote(key - KEYBOARD_1, url);
+          return false;
+      } else if (key >= KEYPAD_1 && key < KEYPAD_1 + size) {
+          change_remote(key - KEYPAD_1, url);
           return false;
       }
   });
