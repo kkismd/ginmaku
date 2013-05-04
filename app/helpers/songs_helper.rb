@@ -18,6 +18,15 @@ module SongsHelper
         html_safe
   end
 
+  def link_to_pdf(id)
+    pdf_file_path = Pathname(Settings.pdf_directory_path) + "#{id}.pdf"
+    if pdf_file_path.exist?
+      link_to('PDF', "/pdf/#{id}.pdf")
+    else
+      ''
+    end
+  end
+
   def title(page_title = 'PRAISE DATABASE')
     content_for :title, page_title.to_s
   end

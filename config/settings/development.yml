@@ -1,0 +1,1 @@
+pdf_directory_path: <%= Rails.root %>/public/pdf

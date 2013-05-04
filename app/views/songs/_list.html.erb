@@ -15,8 +15,9 @@
         <td><%= song.code %></td>
         <td><%= link_to song.title, song %></td>
         <td><%= song.updated_at.to_s(:db) %></td>
+        <td><%= link_to_pdf(song.id) %></td>
         <td><%= link_to 'Edit', edit_song_path(song) %></td>
-        <td><%= link_to 'Destroy', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Del', song, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
   <% end %>
 </table>
