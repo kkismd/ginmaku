@@ -1,4 +1,3 @@
-
 words = null
 window.font_large = ->
   words = $('td.words') if words is null
@@ -20,32 +19,11 @@ window.scroll_up = ->
   current -= 1
   target_offset = $('.chapter:eq('+current+')').offset().top
   $('html,body').animate({scrollTop: target_offset}, 600, 'swing')
+  false
 
 window.scroll_down = ->
   return false if current + 1 >= $('.chapter').length
   current += 1
   target_offset = $('.chapter:eq('+current+')').offset().top
   $('html,body').animate({scrollTop: target_offset}, 600, 'swing')
-
-key_binding = ->
-  $(document).keydown((event) ->
-    ARROW_UP   = 38
-    ARROW_DOWN = 40
-    switch event.keyCode
-      when ARROW_UP
-        scroll_up_remote()
-      when ARROW_DOWN
-        scroll_down_remote()
-      else
-        true
-  )
-button_binding = ->
-  $('#font_large').on('click', -> font_large_remote() )
-  $('#font_small').on('click', -> font_small_remote() )
-  $('#scroll_up').on('click', -> scroll_up_remote() )
-  $('#scroll_down').on('click', -> scroll_down_remote() )
-
-# event binding
-$ ->
-  key_binding()
-  button_binding()
+  false

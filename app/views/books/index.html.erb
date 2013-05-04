@@ -30,9 +30,32 @@
     </table>
 <%- end %>
 <script type="text/javascript">
-  $('#open_button').on('click', function(e){
-      var query_string = '?' + $('#new_book_search_form').serialize();
-      setTimeout(function(){location = '<%= books_path %>' + query_string;}, 500);
+  function key_binding() {
+      $(document).keydown(function(event) {
+          var ARROW_UP   = 38;
+          var ARROW_DOWN = 40;
+
+          switch (event.keyCode) {
+              case ARROW_UP: return scroll_up_remote();
+              case ARROW_DOWN: return scroll_down_remote();
+              default: return true;
+          }
+      });
+  }
+  function button_binding() {
+      $('#font_large').click(font_large_remote);
+      $('#font_small').click(font_small_remote);
+      $('#scroll_up').click(scroll_up_remote);
+      $('#scroll_down').click(scroll_down_remote);
+      $('#open_button').click(function(e){
+          var query_string = '?' + $('#new_book_search_form').serialize();
+          setTimeout(function(){location = '<%= books_path %>' + query_string;}, 500);
+      });
+  }
+  // event binding
+  $(function () {
+      key_binding();
+      button_binding();
   });
 </script>
 
