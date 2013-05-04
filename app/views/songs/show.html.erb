@@ -27,17 +27,20 @@
 </div>
 <script type="text/javascript">
   $(document).keydown(function(event) {
+      var ARROW_UP   = 38;
+      var ARROW_DOWN = 40;
+      var KEYBOARD_0 = 48;
+      var KEYPAD_0   = 96;
       var KEYBOARD_1 = 49;
       var KEYPAD_1   = 97;
-
       var url = '<%= detail_song_url(@song) %>';
       var size = <%= @song.phrases.size %>;
       var key = event.keyCode;
 
-      if (key == 38) {
+      if (key == ARROW_UP) {
           prev_remote(url);
           return false;
-      } else if (key == 40) {
+      } else if (key == ARROW_DOWN) {
           next_remote(url);
           return false;
       } else if (key >= KEYBOARD_1 && key < KEYBOARD_1 + size) {
@@ -45,6 +48,9 @@
           return false;
       } else if (key >= KEYPAD_1 && key < KEYPAD_1 + size) {
           change_remote(key - KEYPAD_1, url);
+          return false;
+      } else if (key == KEYBOARD_0 || key == KEYPAD_0) {
+          wipe_remote();
           return false;
       }
   });
