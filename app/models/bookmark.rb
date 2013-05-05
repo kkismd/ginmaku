@@ -1,7 +1,7 @@
 class Bookmark < ActiveRecord::Base
-  attr_accessible :actioni, :controller, :name, :params
+  attr_accessible :action_name, :controller_name, :title, :params_value
 
   def raw_params
-    ActiveSupport::JSON.decode(params).merge({'controller' => controller, 'action' => action})
+    ActiveSupport::JSON.decode(params_value).merge({'controller' => controller_name, 'action' => action_name})
   end
 end
