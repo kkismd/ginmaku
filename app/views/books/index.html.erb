@@ -1,4 +1,4 @@
-<%- title -%>
+<%- title(@book_search_form.title) -%>
 <%= form_for @book_search_form, url: search_books_path, html: {method: :get, target: 'projector'} do |f| %>
     <table class="books">
       <tr>
@@ -29,6 +29,8 @@
       </tr>
     </table>
 <%- end %>
+<%= render :partial => 'shared/add_to_bookmark', locals: { title: @book_search_form.title }  %>
+
 <script type="text/javascript">
   function key_binding() {
       $(document).keydown(function(event) {
