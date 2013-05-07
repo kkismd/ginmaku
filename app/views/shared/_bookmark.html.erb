@@ -1,0 +1,16 @@
+<div id="bookmark">
+  <%- Folder.recents.each do |folder| -%>
+      <div class="bmfolder"><%= folder.title %></div>
+      <div>
+        <ul class="bmlist">
+          <%- folder.bookmarks.each do |bookmark| -%>
+              <li><span class="ui-icon ui-icon-document"></span><%= link_to_bookmark(bookmark) %></li>
+          <%- end -%>
+        </ul>
+      </div>
+  <%- end -%>
+</div>
+
+<script type="text/javascript">
+  $('#bookmark').accordion();
+</script>
