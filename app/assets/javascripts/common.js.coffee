@@ -38,8 +38,10 @@ window.change_remote = (idx, url) ->
     detail_window.location = url
 
   # 表示切り替えを指示
-  detail_window.change(idx)
-  current = idx
+  setTimeout(->
+    detail_window.change(idx)
+    current = idx
+  ,100)
 
 window.prev_remote = (url) ->
   return false if current <= 0
