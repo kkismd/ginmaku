@@ -14,7 +14,9 @@
 <p>『<%= @song.title %>』(<%= @song.code %>)</p>
 
 <%- @song.outline.each_with_index do |header, idx| %>
-    <p><span class="btn"><%= idx + 1 %></span><%= link_to_function(suppress_ruby(header),
+    <p>
+      <%- if idx < 9 -%><span class="btn"><%= idx + 1 %></span><%- end -%>
+      <%= link_to_function(suppress_ruby(header),
                             "change_remote(#{idx},'#{detail_song_url(@song)}')",
                             :id => "change-button-#{idx}",
                             :class => 'change-button' ) %></p>
