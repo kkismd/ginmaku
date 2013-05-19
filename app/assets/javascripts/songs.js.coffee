@@ -14,6 +14,7 @@ preElement = ->
   $('.song pre')[current]
 
 transition = (callback) ->
+  $('#container').show()
   p().animate({opacity:0}, 100, ->
     p().css({display:'none'})
     preElement().style.position = "relative"
