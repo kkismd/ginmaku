@@ -1,6 +1,6 @@
 class Bookmark < ActiveRecord::Base
-  attr_accessible :action_name, :controller_name, :title, :params_value
-  has_many :bookmarks_folders
+  attr_accessible :action_name, :controller_name, :title, :params_value, :folder_id, :position
+  belongs_to :folder
 
   def self.recents
     self.order('updated_at DESC').limit(30)

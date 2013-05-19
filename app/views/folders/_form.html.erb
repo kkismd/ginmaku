@@ -13,7 +13,7 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title_date %>
+    <%= f.text_field :title_date, size: 12 %>
     <%= f.text_field :title %>
   </div>
   <div class="actions">
@@ -22,6 +22,11 @@
 <% end %>
 <script type="text/javascript">
   $(function () {
-      $('#folder_title_date').datepicker({dateFormat:'yy-mm-dd',showButtonPanel:true});
+      var options = {
+           dateFormat: 'yy-mm-dd'
+          ,buttonImageOnly: true
+          ,buttonImage: '/assets/datepicker.gif'
+      };
+      $('#folder_title_date').datepicker(options);
   })
 </script>

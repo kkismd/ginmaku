@@ -4,6 +4,8 @@
 <table>
   <tr>
     <th>Name</th>
+    <th>folder_id</th>
+    <th>position</th>
     <th></th>
     <th></th>
     <th></th>
@@ -12,9 +14,11 @@
 <% @bookmarks.each do |bookmark| %>
   <tr>
     <td><%= link_to_bookmark(bookmark) %></td>
+    <td><%= bookmark.folder_id %></td>
+    <td><%= bookmark.position %></td>
     <td>[<%= link_to 'show', bookmark %>]</td>
     <td>[<%= link_to 'edit', edit_bookmark_path(bookmark) %>]</td>
-    <td>[<%= link_to 'destroy', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %>]</td>
+    <td>[<%= link_to 'del', bookmark, method: :delete, data: { confirm: 'Are you sure?' } %>]</td>
   </tr>
 <% end %>
 </table>
