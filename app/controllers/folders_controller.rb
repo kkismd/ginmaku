@@ -66,6 +66,12 @@ class FoldersController < ApplicationController
     end
   end
 
+  def create_remote
+    @folder = Folder.make(params[:folder])
+    @folder.save
+    render :partial => 'shared/bookmark'
+  end
+
   # PUT /folders/1
   # PUT /folders/1.json
   def update

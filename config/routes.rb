@@ -5,6 +5,7 @@ Ginmaku::Application.routes.draw do
     end
     collection do
       post :set_current, :as => :set_current
+      post :create_remote, :as => :add
     end
   end
 

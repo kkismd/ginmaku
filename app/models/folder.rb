@@ -5,7 +5,7 @@ class Folder < ActiveRecord::Base
 
   def self.make(attr)
     title_date = attr[:title_date]
-    title = title_date.to_s + attr[:title]
+    title = title_date.to_s + ' ' + attr[:title]
     new(title: title)
   end
 
