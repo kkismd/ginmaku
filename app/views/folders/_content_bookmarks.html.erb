@@ -1,0 +1,8 @@
+<table>
+  <%- @folder.bookmarks.each do |bookmark| -%>
+      <tr>
+        <td><%= bookmark.title %></td>
+        <td>[<%= link_to 'del', bookmark, method: :delete, remote: true, data: { confirm: 'Are you sure?' } %>]</td>
+      </tr>
+  <%- end -%>
+</table>
