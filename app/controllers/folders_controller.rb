@@ -72,6 +72,13 @@ class FoldersController < ApplicationController
     render :partial => 'shared/bookmark'
   end
 
+  def reorder
+    logger.error params[:bm].inspect
+    folder = Folder.find params[:id]
+    folder.reorder params[:bm]
+    render text: 'ok'
+  end
+
   # PUT /folders/1
   # PUT /folders/1.json
   def update

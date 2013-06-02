@@ -2,6 +2,7 @@ Ginmaku::Application.routes.draw do
   resources :folders do
     member do
       get :content, :as => :content_of
+      post :reorder, :as => :reorder
     end
     collection do
       post :set_current, :as => :set_current

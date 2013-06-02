@@ -13,6 +13,21 @@ class Folder < ActiveRecord::Base
     self.order('updated_at DESC').limit(10)
   end
 
+  def reorder(bookmark_ids)
+    id_position_map = {}
+    bookmark_ids.each_with_index do |bookmark_id, idx|
+      id_position_map[bookmark_id.to_i] = idx
+    end
+
+    bookmarks.each do |bookmark|
+      new_position = id_position_map[bookmark.id]
+      if bookmark.position != new_position
+        bookmark.position = new_position
+        bookmark.save
+      end
+    end
+  end
+
   def add(bookmark)
     self.class.transaction do
       max_position = bookmarks.maximum(:position) || 0

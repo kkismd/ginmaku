@@ -1,55 +1,68 @@
-<%- active_folder_idx = 0 -%>
+<%- active_folder_index = active_folder_id = 0 -%>
 <div id="bookmark">
   <%- Folder.recents.each_with_index do |folder, idx| -%>
       <%-
           if folder.id == session[:current_folder].to_i
-            active_folder_idx = idx
+            active_folder_index = idx
+            active_folder_id = folder.id
           end
       -%>
       <div class="bmfolder" data-folder-id="<%= folder.id %>"><%= folder.title %></div>
       <div>
         <ul class="bmlist">
           <%- folder.bookmarks.each do |bookmark| -%>
-              <li><span class="ui-icon ui-icon-document"></span><%= link_to_bookmark(bookmark) %></li>
+              <li id="bm-<%= bookmark.id %>"><span class="ui-icon ui-icon-document"></span><%= link_to_bookmark(bookmark) %></li>
           <%- end -%>
         </ul>
       </div>
   <%- end -%>
 </div>
 
-<script type="text/javascript">
-    $('#bookmark').accordion({active: <%= active_folder_idx %>});
-    $('.bmfolder').click(function(){
-        $.post('<%= set_current_folders_path() %>', {f: this.dataset.folderId} , null, 'json')
-    });
-</script>
-
 <p>
   <span class="ui-icon ui-icon-circle-plus"></span>
   <%= link_to_function '新規フォルダ作成', '$("#new_folder").toggle();' %>
 </p>
-
 
 <%= form_for Folder.new(), :url => add_folders_path, remote: true, :html => {:style => 'display: none;'} do |f| %>
     日付　 <%= f.text_field :title_date, size: 12 %><br />
     集会名 <%= f.text_field :title, size: 22 %><br />
     <%= f.submit %>
 <%- end -%>
+<p>
+  <span class="ui-icon ui-icon-newwin"></span>
+  <a href="/folders" id="edit_folder_link" target="_blank">フォルダの編集</a>
+</p>
+
 <script type="text/javascript">
     $(function () {
+        var active_folder_id = <%= active_folder_id %>;
+        $('#bookmark').accordion({active: <%= active_folder_index %>});
+        $('.bmlist').sortable({
+            stop: function(event, ui) {
+                $.post('/folders/' + active_folder_id + '/reorder', $(this).sortable('serialize'), null, 'text' )
+            }
+        });
+        $('.bmfolder').click(function(){
+            active_folder_id = this.dataset.folderId;
+            $.post('<%= set_current_folders_path() %>', {f: this.dataset.folderId} , null, 'json')
+        });
+
         var options = {
             dateFormat: 'yy-mm-dd'
             ,buttonImageOnly: true
             ,buttonImage: '/assets/datepicker.gif'
         };
         $('#folder_title_date').datepicker(options);
-    });
-    $('#new_folder').on('ajax:success', function(date, res){
-        $('#bookmark_container').html(res);
+
+        $('#new_folder').on('ajax:success', function(date, res){
+            $('#bookmark_container').html(res);
+        });
+
+        $('#edit_folder_link').click(
+                function () {
+                    $(this).attr('href', '/folders/' + active_folder_id + '/edit');
+                }
+        )
     });
 </script>
-<p>
-  <span class="ui-icon ui-icon-newwin"></span>
-  <%= link_to 'フォルダの編集', folders_path, target: '_blank' %>
-</p>
 
