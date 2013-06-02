@@ -1,4 +1,17 @@
 class FoldersController < ApplicationController
+
+  def set_current
+    logger.debug(params.inspect)
+    session[:current_folder] = params[:f].to_i
+    render :text => 'ok'
+  end
+
+  # GET /folders/1/content
+  def content
+    @folder = Folder.find(params[:id])
+    render partial: 'content_bookmarks'
+  end
+
   # GET /folders
   # GET /folders.json
   def index
@@ -40,7 +53,7 @@ class FoldersController < ApplicationController
   # POST /folders
   # POST /folders.json
   def create
-    @folder = Folder.new(params[:folder])
+    @folder = Folder.make(params[:folder])
 
     respond_to do |format|
       if @folder.save

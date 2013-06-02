@@ -1,7 +1,9 @@
 <%- title @song.title -%>
 <p id="notice" style="clear: both;"><%= notice %></p>
 
-<%= render :partial => 'shared/bookmark' %>
+<div id="bookmark_container">
+  <%= render :partial => 'shared/bookmark' %>
+</div>
 
 <div id="thumbnail-area">
 <%- @song.phrases.each do |phrase| -%>

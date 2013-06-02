@@ -9,10 +9,15 @@
             params_value: params_value.to_json
     )
 -%>
-<%= form_for(bookmark, remote: true) do |f| %>
+<%= form_for(bookmark, url: add_bookmarks_path, remote: true) do |f| %>
     <%= f.hidden_field :title %>
     <%= f.hidden_field :controller_name %>
     <%= f.hidden_field :action_name %>
     <%= f.hidden_field :params_value %>
     <%= f.submit 'お気に入りに追加' %>
 <%- end -%>
+<script type="text/javascript">
+    $('#new_bookmark').on('ajax:success', function(data, res, xhr){
+        $('#bookmark_container').html(res);
+    });
+</script>

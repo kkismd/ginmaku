@@ -1,6 +1,12 @@
+<%- active_folder_idx = 0 -%>
 <div id="bookmark">
-  <%- Folder.recents.each do |folder| -%>
-      <div class="bmfolder"><%= folder.title %></div>
+  <%- Folder.recents.each_with_index do |folder, idx| -%>
+      <%-
+          if folder.id == session[:current_folder].to_i
+            active_folder_idx = idx
+          end
+      -%>
+      <div class="bmfolder" data-folder-id="<%= folder.id %>"><%= folder.title %></div>
       <div>
         <ul class="bmlist">
           <%- folder.bookmarks.each do |bookmark| -%>
@@ -12,5 +18,10 @@
 </div>
 
 <script type="text/javascript">
-  $('#bookmark').accordion();
+    $('#bookmark').accordion({active: <%= active_folder_idx %>});
+    $('.bmfolder').click(function(){
+        var folder_id = $(this).data('folder-id');
+        $.post('<%= set_current_folders_path() %>', {f: this.dataset.folderId} , null, 'json')
+    });
 </script>
+

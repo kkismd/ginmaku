@@ -2,5 +2,17 @@
 
 <%= render 'form' %>
 
+<h3>content</h3>
+<div id="bookmark_container">
+  <%= render :partial => 'content_bookmarks' %>
+</div>
+<script type="text/javascript">
+    $('#bookmark_container a').on('ajax:success', function(){
+        $.get('<%= content_of_folder_path %>', {}, function (data){
+            $('#bookmark_container').html(data);
+        });
+    });
+</script>
+
 <%= link_to 'Show', @folder %> |
 <%= link_to 'Back', folders_path %>

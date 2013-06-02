@@ -3,6 +3,12 @@ class Folder < ActiveRecord::Base
   attr_accessor :title_date
   has_many :bookmarks, order: 'bookmarks.position'
 
+  def self.make(attr)
+    title_date = attr[:title_date]
+    title = title_date.to_s + attr[:title]
+    new(title: title)
+  end
+
   def self.recents
     self.order('updated_at DESC').limit(10)
   end

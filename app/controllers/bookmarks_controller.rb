@@ -41,7 +41,6 @@ class BookmarksController < ApplicationController
   # POST /bookmarks.json
   def create
     @bookmark = Bookmark.new(params[:bookmark])
-    Folder.first.add(@bookmark)
 
     respond_to do |format|
       if @bookmark.save
@@ -52,6 +51,17 @@ class BookmarksController < ApplicationController
         format.json { render json: @bookmark.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def create_remote
+    bookmark = Bookmark.new(params[:bookmark])
+    if session[:current_folder].present? && folder = Folder.where(id: session[:current_folder].to_i).first
+      folder.add(bookmark)
+    else
+      Folder.recents.first.add(bookmark)
+    end
+    bookmark.save
+    render :partial => 'shared/bookmark'
   end
 
   # PUT /bookmarks/1
