@@ -14,7 +14,11 @@
   <div class="field">
     <%= f.label :title %><br />
     <%= f.text_field :title_date, size: 12 %>
-    <%= f.text_field :title %>
+    <%= f.text_field :title %><br />
+    <%= f.label :sticky %>
+    <%= f.check_box :sticky %>
+    <br />
+    <input type="hidden" id="folder_content_bookmarks" name="folder_content_bookmarks" />
   </div>
   <div class="actions">
     <%= f.submit %>
@@ -23,9 +27,9 @@
 <script type="text/javascript">
   $(function () {
       var options = {
-           dateFormat: 'yy-mm-dd'
-          ,buttonImageOnly: true
-          ,buttonImage: '/assets/datepicker.gif'
+          dateFormat: 'yy-mm-dd',
+          buttonImageOnly: true,
+          buttonImage: '/assets/datepicker.gif'
       };
       $('#folder_title_date').datepicker(options);
   })
