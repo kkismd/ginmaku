@@ -30,11 +30,12 @@
 <%- end -%>
 <p>
   <span class="ui-icon ui-icon-newwin"></span>
-  <a href="/folders" id="edit_folder_link" target="_blank">フォルダの編集</a>
+  <a href="<%= folders_path %>" id="edit_folder_link" target="_blank">フォルダの編集</a>
 </p>
 
 <script type="text/javascript">
     $(function () {
+        var folders_path = '<%= folders_path %>'
         var active_folder_id = <%= active_folder_id %>;
         $('#bookmark').accordion({active: <%= active_folder_index %>});
         $('.bmlist').sortable({
@@ -60,7 +61,7 @@
 
         $('#edit_folder_link').click(
                 function () {
-                    $(this).attr('href', '/folders/' + active_folder_id + '/edit');
+                    $(this).attr('href', folders_path + '/' + active_folder_id + '/edit');
                 }
         )
     });
