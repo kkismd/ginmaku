@@ -83,9 +83,21 @@ class FoldersController < ApplicationController
   # PUT /folders/1.json
   def update
     @folder = Folder.find(params[:id])
+    if params[:folder_content_bookmarks].present?
+      bms = params[:folder_content_bookmarks].split(/,/).map do |str|
+        str.gsub(/bm_/, '').to_i
+      end
+      @folder.reorder(bms)
+    end
+
+    attr = params[:folder].dup
+    if attr[:title_date].present?
+      attr[:title] = attr[:title_date] + ' ' + attr[:title]
+    end
+    attr.delete(:title_date)
 
     respond_to do |format|
-      if @folder.update_attributes(params[:folder])
+      if @folder.update_attributes(attr)
         format.html { redirect_to @folder, notice: 'Folder was successfully updated.' }
         format.json { head :no_content }
       else
