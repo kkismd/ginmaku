@@ -1,4 +1,7 @@
 <%- title(@book_search_form.title) -%>
+<div id="bookmark_container">
+  <%= render :partial => 'shared/bookmark' %>
+</div>
 <%= form_for @book_search_form, url: search_books_path, html: {method: :get, target: 'projector'} do |f| %>
     <table class="books">
       <tr>

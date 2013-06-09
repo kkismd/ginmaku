@@ -1,6 +1,10 @@
 <%- title @slide.title -%>
 <p id="notice"><%= notice %></p>
 
+<div id="bookmark_container">
+  <%= render :partial => 'shared/bookmark' %>
+</div>
+
 <div id="thumbnail-area">
 <%- @slide.pages.each do |page| -%>
 <pre class="thumbnail"><%= page %></pre>
