@@ -40,7 +40,7 @@
         $('#bookmark').accordion({active: <%= active_folder_index %>});
         $('.bmlist').sortable({
             stop: function(event, ui) {
-                $.post('/folders/' + active_folder_id + '/reorder', $(this).sortable('serialize'), null, 'text' )
+                $.post(folders_path + '/' + active_folder_id + '/reorder', $(this).sortable('serialize'), null, 'text' )
             }
         });
         $('.bmfolder').click(function(){
