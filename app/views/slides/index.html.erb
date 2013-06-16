@@ -1,4 +1,9 @@
 <%- title -%>
+<div id="bookmark_container" class="clearfix">
+  <%= render :partial => 'shared/bookmark' %>
+</div>
+
+<div id="index_container">
 <h1>メッセージスライド</h1>
 
 <%= form_for @slide_search_form, url: search_slides_path, html: {method: :get} do |f| %>
@@ -26,3 +31,4 @@
   <li><%= link_to '賛美歌詞表示 - Praise songs', songs_path %></li>
   <li><%= link_to '聖句検索 - Bible words', books_path %></li>
 </ul>
+</div>

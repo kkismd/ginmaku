@@ -2,6 +2,7 @@
 <div id="bookmark_container">
   <%= render :partial => 'shared/bookmark' %>
 </div>
+<div id="index_container">
 <%= form_for @book_search_form, url: search_books_path, html: {method: :get, target: 'projector'} do |f| %>
     <table class="books">
       <tr>
@@ -69,3 +70,4 @@
   <li><%= link_to '賛美歌詞表示 - Praise songs', songs_path %></li>
   <li><%= link_to 'メッセージスライド - Message summaries', slides_path %></li>
 </ul>
+</div>

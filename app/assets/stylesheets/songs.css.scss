@@ -1,6 +1,10 @@
 // Place all the styles related to the Songs controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+#index_container {
+  position: absolute;
+  left: 230px;
+}
 .song {
   margin: 0;
   font-size: 32px;
