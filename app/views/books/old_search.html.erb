@@ -1,0 +1,28 @@
+<%- title -%>
+<div id="container">
+<div id="view">
+<table>
+  <%- @books.each do |book| -%>
+      <tr>
+        <td class="chapter"><%= book.chapter %>:<%= book.verse %></td>
+        <td class="words"><%= slash_to_br book.word %></td>
+      </tr>
+  <%- end -%>
+</table>
+<script type="text/javascript">
+  // key binding
+  $(function() {
+      $(document).keydown(function(event) {
+          var ARROW_UP   = 38;
+          var ARROW_DOWN = 40;
+
+          switch (event.keyCode) {
+              case ARROW_UP: return scroll_up();
+              case ARROW_DOWN: return scroll_down();
+              default: return true;
+          }
+      });
+  })
+</script>
+</div>
+</div>

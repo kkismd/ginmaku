@@ -1,17 +1,31 @@
-div#view {
-  float: right;
-  width: 97%;
-
-  .chapter {
-    font-size: 34px;
-    vertical-align: top;
-  }
-  .words {
-    font-size: 52px;
-    font-family: Helvetica, Arial, sans-serif;
-  }
+#bible-words-container {
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  font-size: 42px;
+  overflow: hidden;
 }
-.books {
-  font-size: 11px;
+#book-name {
+  position: absolute;
+  top: 10px;
+  width: 95%;
   font-family: Helvetica, Arial, sans-serif;
+  text-align: right;
+  font-size: 26px;
+  color: yellow;
+}
+.book-word {
+  padding-left: 10px;
+  padding-right: 30px;
+}
+.hide {
+  display: none;
+}
+.verse {
+  position: relative;
+}
+.verse-num {
+  font-size: 65%;
+  font-style: italic;
+  color: yellow;
 }

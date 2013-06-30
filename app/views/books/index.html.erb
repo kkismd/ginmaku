@@ -7,8 +7,6 @@
     <table class="books">
       <tr>
         <td colspan="3"></td><td rowspan="68" >
-        文字<button id="font_large">大</button><br/>
-        文字<button id="font_small">小</button><br/><br/>
         スクロール <button id="scroll_up">↑</button><br/>
         スクロール <button id="scroll_down">↓</button>
       </td>
@@ -49,8 +47,6 @@
       });
   }
   function button_binding() {
-      $('#font_large').click(font_large_remote);
-      $('#font_small').click(font_small_remote);
       $('#scroll_up').click(scroll_up_remote);
       $('#scroll_down').click(scroll_down_remote);
       $('#open_button').click(function(e){
