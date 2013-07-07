@@ -10,16 +10,12 @@ window.books_centering = ->
 window.books_resize = ->
   $container = $('#bible-words-container')
   $element = $('#wd-' + current)
-  containerHeight = $container.height()
-  elementHeight = $element.height()
-  if containerHeight < elementHeight
-    gap_ratio = containerHeight / elementHeight
+  container_height = $container.height()
+  element_height = $element.height()
+  if container_height < element_height
+    gap_ratio = container_height / element_height
     font_size = parseInt($container.css('font-size'))
     new_font_size = font_size * gap_ratio * 0.95
-    console.log('containerHeight :' + containerHeight)
-    console.log('elementHeight :' + elementHeight)
-    console.log('gap_ratio: ' + gap_ratio)
-    console.log('fontSize: ' + new_font_size)
     $container.css('font-size', new_font_size + 'px')
 
 current = 0
@@ -50,3 +46,16 @@ window.scroll_down = ->
   return false if current + 1 >= max_section_num
   books_transition(-> current++)
   false
+
+font_size_change = (callback) ->
+  $container = $('#bible-words-container')
+  font_size = parseInt($container.css('font-size'))
+  new_font_size = callback(font_size) + 'px'
+  $container.css('font-size', new_font_size)
+  books_centering()
+
+window.font_large = ->
+  font_size_change( (size) -> size * 1.1 )
+
+window.font_small = ->
+  font_size_change( (size) -> size * 0.9 )
