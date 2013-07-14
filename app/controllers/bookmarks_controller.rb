@@ -55,7 +55,8 @@ class BookmarksController < ApplicationController
 
   def create_remote
     bookmark = Bookmark.new(params[:bookmark])
-    if session[:current_folder].present? && folder = Folder.where(id: session[:current_folder].to_i).first
+    session[:current_folder].present? && folder = Folder.where(id: session[:current_folder].to_i).first
+    if folder
       folder.add(bookmark)
     else
       Folder.recents.first.add(bookmark)

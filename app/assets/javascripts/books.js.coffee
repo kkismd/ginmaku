@@ -9,14 +9,13 @@ window.books_centering = ->
 
 window.books_resize = ->
   $container = $('#bible-words-container')
+  $header = $('#book-name')
   $element = $('#wd-' + current)
-  container_height = $container.height()
-  element_height = $element.height()
-  if container_height < element_height
-    gap_ratio = container_height / element_height
+  while $container.height() < ($element.height() + $header.height())
     font_size = parseInt($container.css('font-size'))
-    new_font_size = font_size * gap_ratio * 0.95
+    new_font_size = font_size * 0.95
     $container.css('font-size', new_font_size + 'px')
+    console.log('new_font_size: ', new_font_size)
 
 current = 0
 w = -> $('#wd-' + current)

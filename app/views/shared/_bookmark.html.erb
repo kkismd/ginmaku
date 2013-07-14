@@ -37,7 +37,7 @@
     $(function () {
         var folders_path = '<%= folders_path %>'
         var active_folder_id = <%= active_folder_id %>;
-        $('#bookmark').accordion({active: <%= active_folder_index %>});
+        $('#bookmark').accordion({active: <%= active_folder_index %>, collapsible: true});
         $('.bmlist').sortable({
             stop: function(event, ui) {
                 $.post(folders_path + '/' + active_folder_id + '/reorder', $(this).sortable('serialize'), null, 'text' )
@@ -49,9 +49,9 @@
         });
 
         var options = {
-            dateFormat: 'yy-mm-dd'
-            ,buttonImageOnly: true
-            ,buttonImage: '/assets/datepicker.gif'
+            dateFormat: 'yy-mm-dd',
+            buttonImageOnly: true,
+            buttonImage: '/assets/datepicker.gif'
         };
         $('#folder_title_date').datepicker(options);
 
