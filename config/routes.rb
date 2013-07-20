@@ -1,5 +1,21 @@
 Ginmaku::Application.routes.draw do
-  resources :bookmarks
+  resources :folders do
+    member do
+      get :content, :as => :content_of
+      post :reorder, :as => :reorder
+    end
+    collection do
+      post :set_current, :as => :set_current
+      post :create_remote, :as => :add
+    end
+  end
+
+
+  resources :bookmarks do
+    collection do
+      post :create_remote, :as => :add
+    end
+  end
 
   resources :slides do
     member do

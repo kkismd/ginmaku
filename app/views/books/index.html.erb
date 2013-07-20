@@ -1,4 +1,8 @@
-<%- title -%>
+<%- title(@book_search_form.title) -%>
+<div id="bookmark_container">
+  <%= render :partial => 'shared/bookmark' %>
+</div>
+<div id="index_container">
 <%= form_for @book_search_form, url: search_books_path, html: {method: :get, target: 'projector'} do |f| %>
     <table class="books">
       <tr>
@@ -29,6 +33,8 @@
       </tr>
     </table>
 <%- end %>
+<%= render :partial => 'shared/add_to_bookmark', locals: { title: @book_search_form.title }  %>
+
 <script type="text/javascript">
   function key_binding() {
       $(document).keydown(function(event) {
@@ -64,3 +70,4 @@
   <li><%= link_to '賛美歌詞表示 - Praise songs', songs_path %></li>
   <li><%= link_to 'メッセージスライド - Message summaries', slides_path %></li>
 </ul>
+</div>

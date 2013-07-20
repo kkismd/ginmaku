@@ -1,28 +1,37 @@
-<%- title -%>
-<div id="container">
-<div id="view">
-<table>
-  <%- @books.each do |book| -%>
-      <tr>
-        <td class="chapter"><%= book.chapter %>:<%= book.verse %></td>
-        <td class="words"><%= slash_to_br book.word %></td>
-      </tr>
+<div id="bible-words-container">
+  <%- @books.each_with_index do |book, i| -%>
+      <%- if i.even? -%><div id="wd-<%= i / 2 %>" class="verse hide"><%- end -%>
+      <p class="book-word">
+        <span class="verse-num"><%= book.verse %>:</span> <%= book.word.gsub('／', '') %>
+      </p>
+      <%- if i.odd? -%></div><%- end -%>
   <%- end -%>
-</table>
-<script type="text/javascript">
-  // key binding
-  $(function() {
-      $(document).keydown(function(event) {
-          var ARROW_UP   = 38;
-          var ARROW_DOWN = 40;
+</div>
 
-          switch (event.keyCode) {
-              case ARROW_UP: return scroll_up();
-              case ARROW_DOWN: return scroll_down();
-              default: return true;
+<div id="book-name">
+  <%= @books.first.book_name.japanese %> / <%= @books.first.book_name.english %>
+  : <%= @books.first.chapter %>
+</div>
+<script type="text/javascript">
+  var max_section_num = <%= @books.count / 2 %>;
+  function keybind() {
+      $(document).keydown(function(event) {
+          if (event.keyCode == 38) {
+              return scroll_up();
+          } else if (event.keyCode == 40) {
+              return scroll_down();
           }
       });
-  })
+  }
+  function init() {
+      var wd0 = $('#wd-0');
+      wd0.removeClass('hide');
+      books_resize();
+      books_centering();
+      set_max_section_num(max_section_num);
+  }
+  $(function (){
+      init();
+      keybind();
+  });
 </script>
-</div>
-</div>

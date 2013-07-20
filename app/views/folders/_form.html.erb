@@ -1,0 +1,36 @@
+<%= form_for(@folder) do |f| %>
+  <% if @folder.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@folder.errors.count, "error") %> prohibited this folder from being saved:</h2>
+
+      <ul>
+      <% @folder.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :title %><br />
+    <%= f.text_field :title_date, size: 12 %>
+    <%= f.text_field :title %><br />
+    <%= f.label :sticky %>
+    <%= f.check_box :sticky %>
+    <br />
+    <input type="hidden" id="folder_content_bookmarks" name="folder_content_bookmarks" />
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
+<script type="text/javascript">
+  $(function () {
+      var options = {
+          dateFormat: 'yy-mm-dd',
+          buttonImageOnly: true,
+          buttonImage: '/assets/datepicker.gif'
+      };
+      $('#folder_title_date').datepicker(options);
+  })
+</script>

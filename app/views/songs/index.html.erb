@@ -1,4 +1,9 @@
 <%- title -%>
+<div id="bookmark_container" class="clearfix">
+  <%= render :partial => 'shared/bookmark' %>
+</div>
+
+<div id="index_container">
 <h1>PRAISE DATABASE</h1>
 
 <%= form_for @song_search_form, url: search_songs_path, html: {:method => :get} do |f| -%>
@@ -26,3 +31,4 @@
   <li><%= link_to '聖句検索 - Bible words', books_path %></li>
   <li><%= link_to 'メッセージレジュメ - Message summaries', slides_path %></li>
 </ul>
+</div>

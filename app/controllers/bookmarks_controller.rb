@@ -53,6 +53,18 @@ class BookmarksController < ApplicationController
     end
   end
 
+  def create_remote
+    bookmark = Bookmark.new(params[:bookmark])
+    session[:current_folder].present? && folder = Folder.where(id: session[:current_folder].to_i).first
+    if folder
+      folder.add(bookmark)
+    else
+      Folder.recents.first.add(bookmark)
+    end
+    bookmark.save
+    render :partial => 'shared/bookmark'
+  end
+
   # PUT /bookmarks/1
   # PUT /bookmarks/1.json
   def update

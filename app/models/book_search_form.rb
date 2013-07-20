@@ -1,3 +1,4 @@
+# coding: utf-8
 class BookSearchForm
   extend ActiveModel::Naming
   include ActiveModel::Conversion
@@ -39,6 +40,25 @@ class BookSearchForm
       books = books.where(t[:verse].lteq(vt))
     end
     books.order(t[:chapter].asc, t[:verse].asc, t[:version].asc).tap {|rel| Rails.logger.warn rel.to_sql }
+  end
+
+  def title
+    result = ''
+    if self.n.present?
+      book_name = BookName.where(id: self.n.to_i).first
+      result << book_name.japanese + '/' + book_name.english
+    end
+    if self.c.present?
+      result << ' ' << self.c
+    end
+    if self.vf.present?
+      result << ':' << self.vf
+    end
+    if self.vt.present?
+      result << '-' << self.vt
+    end
+
+    result.present? ? result : '聖句検索'
   end
 
   private

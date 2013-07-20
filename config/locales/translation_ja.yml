@@ -4,6 +4,8 @@ ja:
       book: book  #g
       book_name: book_name  #g
       song: song  #g
+      bookmark: お気に入り(BOOKMARK)
+      folder: お気に入りフォルダ(FOLDER)
 
     attributes:
       book:
@@ -27,3 +29,7 @@ ja:
         title: 題名(TITLE)
         body: 内容(CONTENTS)
         author: 作者(AUTHOR)
+
+      folder:
+        title: 題名(TITLE)
+        sticky: 常に表示(SHOW ALWAYS)

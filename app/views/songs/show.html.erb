@@ -1,6 +1,10 @@
 <%- title @song.title -%>
 <p id="notice" style="clear: both;"><%= notice %></p>
 
+<div id="bookmark_container">
+  <%= render :partial => 'shared/bookmark' %>
+</div>
+
 <div id="thumbnail-area">
 <%- @song.phrases.each do |phrase| -%>
 <pre class="thumbnail"><%= suppress_ruby phrase %></pre>
@@ -26,6 +30,7 @@
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %> |
 <%= button_to_blank %>
+<%= render :partial => 'shared/add_to_bookmark', locals: { title: @song.title }  %>
 
 </div>
 <script type="text/javascript">

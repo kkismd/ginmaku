@@ -1,0 +1,17 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @folder.title %>
+</p>
+
+<h3>content</h3>
+<%= render 'content_bookmarks' %>
+<script type="text/javascript">
+    $('#folder_content a').on('ajax:success', function(){
+        location.reload();
+    });
+</script>
+<p>
+<%= link_to 'Edit', edit_folder_path(@folder) %> |
+<%= link_to 'Back', folders_path %></p>

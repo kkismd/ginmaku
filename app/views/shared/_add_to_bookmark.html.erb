@@ -1,0 +1,23 @@
+<%-
+    params_value = params.dup
+    params_value.delete('controller')
+    params_value.delete('action')
+    bookmark = Bookmark.new(
+            title: title,
+            controller_name: controller_name,
+            action_name: action_name,
+            params_value: params_value.to_json
+    )
+-%>
+<%= form_for(bookmark, url: add_bookmarks_path, remote: true) do |f| %>
+    <%= f.hidden_field :title %>
+    <%= f.hidden_field :controller_name %>
+    <%= f.hidden_field :action_name %>
+    <%= f.hidden_field :params_value %>
+    <%= f.submit 'お気に入りに追加' %>
+<%- end -%>
+<script type="text/javascript">
+    $('#new_bookmark').on('ajax:success', function(data, res){
+        $('#bookmark_container').html(res);
+    });
+</script>

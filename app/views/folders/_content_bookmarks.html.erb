@@ -1,0 +1,23 @@
+<table>
+  <tbody id="folder_content">
+  <%- @folder.bookmarks.each do |bookmark| -%>
+      <tr id="bm_<%= bookmark.id %>">
+        <td><%= bookmark.title %></td>
+        <td>[<%= link_to 'del', bookmark, method: :delete, remote: true, :'data-type' => 'json', data: { confirm: 'Are you sure?' } %>]</td>
+      </tr>
+  <%- end -%>
+  </tbody>
+</table>
+<script type="text/javascript">
+    $(function(){
+        $('#folder_content').sortable({
+            cursor: 'move',
+            start: function(event, ui) {ui.item.css("background-color", "orange");},
+            stop:  function(event, ui) {
+                ui.item.css("background-color", "transparent");
+                $('#folder_content_bookmarks').val($(this).sortable('toArray'));
+            }
+        });
+        $('#folder_content').disableSelection();
+    });
+</script>
