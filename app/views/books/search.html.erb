@@ -1,3 +1,11 @@
+<%- title(@book_search_form.title) -%>
+<%- content_for :header do -%>
+    <style type="text/css">
+        html,body {
+            overflow: hidden;
+        }
+    </style>
+<%- end -%>
 <div id="container">
   <div id="bible-words-container">
     <%- @books.each_with_index do |book, i| -%>
