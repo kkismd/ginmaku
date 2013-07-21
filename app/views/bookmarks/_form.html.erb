@@ -13,8 +13,10 @@
 
   <div class="field">
     <%= f.label :title %><br />
-    <%= f.text_field :title %>
+    <%= f.text_field :title, size: 80 %>
   </div>
+
+    <h3>※以下の内容は変更しないで下さい。</h3>
   <div class="field">
     <%= f.label :controller_name %><br />
     <%= f.text_field :controller_name %>
@@ -35,7 +37,9 @@
     <%= f.label :position %><br />
     <%= f.text_field :position %>
   </div>
+    <br />
   <div class="actions">
     <%= f.submit %>
   </div>
+    <br />
 <% end %>
