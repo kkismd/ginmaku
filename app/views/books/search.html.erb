@@ -17,10 +17,12 @@
     <%- end -%>
   </div>
 
+  <%- if @books.present? -%>
   <div id="book-name">
     <%= @books.first.book_name.japanese %> / <%= @books.first.book_name.english %>
     : <%= @books.first.chapter %>
   </div>
+  <%- end -%>
 </div>
 <script type="text/javascript">
   var max_section_num = <%= @books.count / 2 %>;
