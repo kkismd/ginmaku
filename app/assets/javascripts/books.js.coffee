@@ -1,5 +1,5 @@
 window.books_centering = ->
-  $container = $('#bible-words-container')
+  $container = $('#words-container')
   $header = $('#book-name')
   $element = $('#wd-' + current)
   topOffset = ($container.height() - $element.height()) / 2 - $header.height()
@@ -8,7 +8,7 @@ window.books_centering = ->
     $element.css('top', topOffset)
 
 window.books_resize = ->
-  $container = $('#bible-words-container')
+  $container = $('#words-container')
   $header = $('#book-name')
   $element = $('#wd-' + current)
   while $container.height() < ($element.height() + $header.height())
@@ -47,7 +47,7 @@ window.scroll_down = ->
   false
 
 font_size_change = (callback) ->
-  $container = $('#bible-words-container')
+  $container = $('#words-container')
   font_size = parseInt($container.css('font-size'))
   new_font_size = callback(font_size) + 'px'
   $container.css('font-size', new_font_size)

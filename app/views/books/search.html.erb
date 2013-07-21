@@ -7,7 +7,7 @@
     </style>
 <%- end -%>
 <div id="container">
-  <div id="bible-words-container">
+  <div id="words-container">
     <%- @books.each_with_index do |book, i| -%>
         <%- if i.even? -%><div id="wd-<%= i / 2 %>" class="verse hide"><%- end -%>
         <p class="book-word">
