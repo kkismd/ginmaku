@@ -1,16 +1,18 @@
-<div id="bible-words-container">
-  <%- @books.each_with_index do |book, i| -%>
-      <%- if i.even? -%><div id="wd-<%= i / 2 %>" class="verse hide"><%- end -%>
-      <p class="book-word">
-        <span class="verse-num"><%= book.verse %>:</span> <%= book.word.gsub('／', '') %>
-      </p>
-      <%- if i.odd? -%></div><%- end -%>
-  <%- end -%>
-</div>
+<div id="container">
+  <div id="bible-words-container">
+    <%- @books.each_with_index do |book, i| -%>
+        <%- if i.even? -%><div id="wd-<%= i / 2 %>" class="verse hide"><%- end -%>
+        <p class="book-word">
+          <span class="verse-num"><%= book.verse %>:</span> <%= book.word.gsub('／', '') %>
+        </p>
+        <%- if i.odd? -%></div><%- end -%>
+    <%- end -%>
+  </div>
 
-<div id="book-name">
-  <%= @books.first.book_name.japanese %> / <%= @books.first.book_name.english %>
-  : <%= @books.first.chapter %>
+  <div id="book-name">
+    <%= @books.first.book_name.japanese %> / <%= @books.first.book_name.english %>
+    : <%= @books.first.chapter %>
+  </div>
 </div>
 <script type="text/javascript">
   var max_section_num = <%= @books.count / 2 %>;
