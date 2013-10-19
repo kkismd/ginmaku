@@ -58,3 +58,11 @@ a:active {
     height: 0;
     visibility: hidden;
 }
+
+.shadow {
+    text-shadow:
+        -1px -1px #000,
+        1px -1px #000,
+        -1px 1px #000,
+        1px 1px #000;
+}
