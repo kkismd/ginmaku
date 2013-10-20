@@ -20,7 +20,7 @@ html {
     scrollbar-base-color: #223355;
 }
 body {
-    background: rgb(0, 0, 5) url(bg.png) fixed;
+    background: rgb(0, 0, 0) ;
     background-size: contain;
     color: white;
 }
@@ -61,8 +61,8 @@ a:active {
 
 .shadow {
     text-shadow:
-        -1px -1px #000,
-        1px -1px #000,
-        -1px 1px #000,
-        1px 1px #000;
+        -1px -1px #00f,
+        1px -1px #00f,
+        -1px 1px #00f,
+        1px 1px #00f;
 }

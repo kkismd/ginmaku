@@ -1,6 +1,6 @@
 window.resize = (e) ->
   # フォントサイズを初期化する
-  e.style.fontSize = '64px'
+  e.style.fontSize = '80px'
 
   # 領域のサイズとdivのサイズの割合を求める
   widthGap = e.parentNode.clientWidth / e.scrollWidth
