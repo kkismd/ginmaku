@@ -30,6 +30,7 @@
 <%= link_to 'Edit', edit_song_path(@song) %> |
 <%= link_to 'Back', songs_path %> |
 <%= button_to_blank %>
+<%= button_to_function '表示切替(半分)', 'song_halve_remote()' %>
 <%= render :partial => 'shared/add_to_bookmark', locals: { title: @song.title }  %>
 
 </div>

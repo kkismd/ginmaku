@@ -26,6 +26,15 @@ transition = (callback) ->
     p().animate({opacity:1}, 100)
   )
 
+
+window.song_halve = ->
+  if p().hasClass('half')
+    $('.song').each( ->$(this).removeClass('half') )
+    transition( -> p().removeClass('half') )
+  else
+    $('.song').each( ->$(this).addClass('half') )
+    transition( -> p().addClass('half') )
+
 # 指定された番号の歌詞に切り替える
 window.change = (idx) ->
   transition( -> current = idx )

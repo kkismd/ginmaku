@@ -62,6 +62,8 @@ window.wipe_remote = -> get_target_window().wipe()
 window.wipe = ->
   $('#container').toggle()
 
+window.song_halve_remote = -> get_target_window().song_halve()
+
 window.font_large_remote  = -> get_target_window().font_large(); false
 window.font_small_remote  = -> get_target_window().font_small(); false
 window.scroll_up_remote   = -> get_target_window().scroll_up();  false
