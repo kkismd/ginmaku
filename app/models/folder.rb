@@ -1,4 +1,6 @@
 class Folder < ActiveRecord::Base
+  FOLDER_SHOW_COUNT = 20
+
   attr_accessible :title, :sticky
   attr_accessor :title_date
   has_many :bookmarks, order: 'bookmarks.position'
@@ -10,7 +12,7 @@ class Folder < ActiveRecord::Base
   end
 
   def self.recents
-    self.order('sticky DESC, updated_at DESC').limit(10)
+    self.order('sticky DESC, updated_at DESC').limit(FOLDER_SHOW_COUNT)
   end
 
   def reorder(bookmark_ids)
