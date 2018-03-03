@@ -41,6 +41,10 @@ GEM
     coffee-script-source (1.4.0)
     domain_name (0.5.8)
       unf (~> 0.0.3)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -148,6 +152,7 @@ PLATFORMS
 DEPENDENCIES
   acts_as_paranoid (~> 0.4.0)
   coffee-rails (~> 3.2.1)
+  dotenv-rails
   i18n_generators
   jquery-rails
   jquery-ui-themes
