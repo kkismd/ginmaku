@@ -1,4 +1,6 @@
 Ginmaku::Application.routes.draw do
+  root to: 'homes#top'
+
   resources :folders do
     member do
       get :content, :as => :content_of
