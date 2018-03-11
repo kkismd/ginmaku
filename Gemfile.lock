@@ -41,6 +41,10 @@ GEM
     coffee-script-source (1.4.0)
     domain_name (0.5.8)
       unf (~> 0.0.3)
+    dotenv (2.2.1)
+    dotenv-rails (2.2.1)
+      dotenv (= 2.2.1)
+      railties (>= 3.2, < 5.2)
     erubis (2.7.0)
     execjs (1.4.0)
       multi_json (~> 1.0)
@@ -78,7 +82,7 @@ GEM
     mime-types (1.22)
     multi_json (1.7.2)
     multi_xml (0.5.3)
-    mysql2 (0.3.11)
+    mysql2 (0.3.21)
     net-http-digest_auth (1.2.1)
     net-http-persistent (2.8)
     nokogiri (1.5.6)
@@ -148,11 +152,12 @@ PLATFORMS
 DEPENDENCIES
   acts_as_paranoid (~> 0.4.0)
   coffee-rails (~> 3.2.1)
+  dotenv-rails
   i18n_generators
   jquery-rails
   jquery-ui-themes
   kaminari
-  mysql2
+  mysql2 (~> 0.3.17)
   rails (= 3.2.13)
   rails_config
   sass-rails (~> 3.2.3)
@@ -160,3 +165,6 @@ DEPENDENCIES
   test-unit
   uglifier (>= 1.0.3)
   unicorn
+
+BUNDLED WITH
+   1.16.1
